@@ -1,0 +1,23 @@
+{
+  "name": "@sixth-harmony/backend",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "^16.16.0",
+    "npm": "^8.14.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
