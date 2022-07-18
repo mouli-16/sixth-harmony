@@ -2,13 +2,19 @@ require('dotenv').config()
 
 const convict = require('convict')
 
-convict.addFormat({
-    name:'cors_format',
-    validate: function(val) {
-        if(!Array.isArray(val) && !(typeof val === 'string'))
-            throw new Error('must be list of string or string')
-    }
-})
+function convertCors(val) {
+    
+    if(val[0] !== '[') 
+        return val
+
+    val = val.replace(' ','')
+    if(val[val.length - 1] !== ']')
+        throw new Error('Invalid Cors Origins')
+
+    val = val.substring(1,val.length-1)
+    val = val.split(',')
+    return val
+}
 
 const config = convict({
     ENV: {
@@ -28,7 +34,6 @@ const config = convict({
 
     CORS_ORIGINS : {
         doc:'CORS origins',
-        format:'cors_format',
         default:'*',
         env:'CORS_ORIGINS',
         arg:'cors',
@@ -37,4 +42,7 @@ const config = convict({
 
 config.validate({allowed:'strict'})
 
-module.exports = config.getProperties()
+var configProperties = config.getProperties()
+configProperties.CORS_ORIGINS = convertCors(configProperties.CORS_ORIGINS)
+
+module.exports = configProperties
