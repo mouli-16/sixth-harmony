@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors')
 
-const PORT = process.env.PORT || 8000
+const config = require('./config/config')
+
+const PORT = config.PORT
 
 const app = express()
 
@@ -10,7 +12,7 @@ const app = express()
  */
 app.use(express.json())
 app.use(cors({
-    origin: process.env.CORS_ORIGINS || '*'
+    origin: config.CORS_ORIGINS
 }))
 
 /**
