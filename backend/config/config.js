@@ -1,3 +1,5 @@
+const fs = require('fs')
+const path = require('path')
 require('dotenv').config()
 
 const convict = require('convict')
@@ -15,6 +17,14 @@ function convertCors(val) {
     val = val.split(',')
     return val
 }
+
+convict.addFormat({
+    name:'path-exists',
+    validate: function(path){
+        if(!fs.existsSync(path))
+            throw new Error("Path must exist")
+    }
+})
 
 const config = convict({
     ENV: {
@@ -37,6 +47,15 @@ const config = convict({
         default:'*',
         env:'CORS_ORIGINS',
         arg:'cors',
+        
+    },
+    AADHAAR_PRIVATE_FILE : {
+        doc:"File that contains sensitive aadhar data",
+        format:'path-exists',
+        default:'./aadhaarPrivate.json',
+        env:'AADHAAR_PRIVATE_FILE',
+        arg:'aadharp',
+        sensitive:true,
     }
 })
 
@@ -44,5 +63,6 @@ config.validate({allowed:'strict'})
 
 var configProperties = config.getProperties()
 configProperties.CORS_ORIGINS = convertCors(configProperties.CORS_ORIGINS)
+configProperties.AADHAAR_PRIVATE_FILE = path.join(require.main.path,configProperties.AADHAAR_PRIVATE_FILE)
 
 module.exports = configProperties
