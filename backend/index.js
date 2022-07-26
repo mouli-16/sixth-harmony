@@ -3,6 +3,7 @@ const cors = require('cors')
 
 const config = require('./config/config')
 const routes = require('./routes/index')
+const mongoose = require('mongoose');
 const PORT = config.PORT
 
 const app = express()
@@ -16,13 +17,14 @@ app.use(cors({
 }))
 
 
-
 /**
  * Main server
  */
-app.listen(PORT, () => {
+ mongoose.connect(process.env.DB,{useNewUrlParser:true,useUnifiedTopology:true})
+ .then((result)=>app.listen(PORT, () => {
     console.log(`server listenning on ${PORT}`)
-})
+})).catch((err)=>console.log(err));
+
 /**
  * Routes
  */
