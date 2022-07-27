@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 
 const config = require('./config/config')
-const routes = require('./routes/index')
+const userRoutes = require('./routes/user')
+const storageRoutes = require('./routes/storage')
+
 const mongoose = require('mongoose');
 const PORT = config.PORT
 
@@ -28,4 +30,5 @@ app.use(cors({
 /**
  * Routes
  */
- app.use(routes)
+ app.use(userRoutes)
+ app.use(storageRoutes)

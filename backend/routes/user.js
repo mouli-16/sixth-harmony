@@ -38,13 +38,21 @@ routes.post('/otp', async(req,res)=>{
     const name = user.name
     const blocked = false
     var userObject
-    try{
-      userObject = await User.create({name,aadhaar,type,blocked,otp});
-        
-    }catch(err){
-        console.log(err)
-      }
-
+  
+     const getUser = await User.findOne({ aadhaar: aadhaar })
+        //No user found
+        if (!getUser) {
+          userObject = await User.create({name,aadhaar,type,blocked,otp});
+        }
+          else{
+           userObject = await User.updateOne({
+             aadhaar:aadhaar
+           },
+           {
+           otp:otp
+           })
+       }
+ 
     const provider = "twilio";  var result;
 
     //Twilio
