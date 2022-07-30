@@ -1,27 +1,27 @@
 [
-    {
-        "name"  : "Vishnu Mathal",
-        "phone" : "5182308746",
-        "aadhaar": "012345678910"
-    },
-    {
-        "name"  : "Abhishek Ramakrishnan",
-        "phone" : "9663912145",
-        "aadhaar": "891267346501"
-    },
-    {
-        "name"  : "Kalyan Tara",
-        "phone" : "81523086247",
-        "aadhaar": "210345678109"
-    },
-    {
-        "name"  : "Rati Gour",
-        "phone" : "6693912541",
-        "aadhaar": "198267346105"
-    },
-    {
-        "name"  : "Srijan Majumdar",
-        "phone" : "+919330427421",
-        "aadhaar" : "123456789012"
-    }
+  {
+    "name": "Vishnu Mathal",
+    "phone": "5182308746",
+    "aadhaar": "012345678910"
+  },
+  {
+    "name": "Abhishek Ramakrishnan",
+    "phone": "9663912145",
+    "aadhaar": "891267346501"
+  },
+  {
+    "name": "Kalyan Tara",
+    "phone": "81523086247",
+    "aadhaar": "210345678109"
+  },
+  {
+    "name": "Rati Gour",
+    "phone": "6693912541",
+    "aadhaar": "198267346105"
+  },
+  {
+    "name": "Srijan Majumdar",
+    "phone": "+919330427421",
+    "aadhaar": "123456789012"
+  }
 ]
