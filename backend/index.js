@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const config = require('./config/config')
 const routes = require('./routes')
 
-const PORT = config.PORT
+const { PORT, DB_URI } = config
 
 const app = express()
 
@@ -26,16 +26,21 @@ app.use(routes.storage)
 
 ;(async () => {
   await mongoose.connect(
-    process.env.DB,
+    DB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true 
     }
-  )
+  ).then(() => console.log(
+    'Connection established to dB'
+  ))
+
   /**
    * Main server
    */
   app.listen(PORT, () => {
-    console.log(`server listenning on ${PORT}`)
+    console.log(
+      `server listenning on ${PORT}`
+    )
   })
 })()

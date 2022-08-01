@@ -1,106 +1,63 @@
-const express = require('express');
-const getDetailsFromAadhaar = require('../utils/index');
-const routes = express.Router();
-require('dotenv').config()
-const db = require('../utils/index');
-const User = require('../models/user')
+const { Router } = require('express')
 
-// Configure AWS
-const AWS = require("aws-sdk");
-const SESConfig = {
-  apiVersion: "2010-03-31",
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  accessSecretKey: process.env.AWS_SECRET_ACCESS_KEYAWS_SECRET_KEY,
-  region: "ap-south-1"
-}
-AWS.config.update(SESConfig);
+const { User } = require('../models')
+const { getDetailsFromAadhaar } = require('../utils/dummy')
+const { sendOTP } = require('../utils/otp')
 
-
-function generateOTP(length) {
-  let digits = "0123456789";
-  let OTP = "";
-  for (let i = 0; i < length; i++) {
-    OTP += digits[Math.floor(Math.random() * 10)]
-  }
-  return OTP;
-}
+const routes = Router()
 
 routes.post('/otp', async (req, res) => {
   const { aadhaar, type } = req.body;
-  const user = getDetailsFromAadhaar(aadhaar);
-  const otp = generateOTP(6)
-  const message = `Your SIH OTP is ${otp}`
-  const accountSid = process.env.TWILIO_ACCOUNT_SID;
-  const authToken = process.env.TWILIO_AUTH_TOKEN;
-  const client = require("twilio")(accountSid, authToken);
+  const userDetails = getDetailsFromAadhaar(aadhaar)
 
-  // Register User
-  const name = user.name
-  const blocked = false
-  let userObject
+  if(!userDetails) {
+    return res.status(404).json()
+  }
 
-  const getUser = await User.findOne({ aadhaar: aadhaar })
+  let user
+  user = await User.findOne({ aadhaar: aadhaar })
   //No user found
-  if (!getUser) {
-    userObject = await User.create({ name, aadhaar, type, blocked, otp });
-  }
-  else {
-    userObject = await User.updateOne({
-      aadhaar: aadhaar
-    },
-      {
-        otp: otp
-      })
+  if (!user) {
+    const name = userDetails.name
+    user = await User.create({ name, aadhaar, type })
   }
 
-  const provider = "twilio"; var result;
-
-  //Twilio
-  if (provider == 'twilio') {
-    result = await client.messages.create({
-      body: message,
-      messagingServiceSid: process.env.TWILIO_MESSAGING_SERVICE_SID,
-      to: user.phone,
-    });
-
+  let otp
+  if (!userDetails.otp) {
+    const { otp: _otp } = await sendOTP(userDetails.phone)
+    otp = _otp
+  } else {
+    otp = userDetails.otp
   }
-  //AWS SNS
-  if (provider == "sns") {
-    result = await new AWS.SNS({ apiVersion: "2010-03-31" })
-      .publish({
-        Message: message,
-        PhoneNumber: user.phone,
-      })
-      .promise();
-  }
-  res.status(200).send(userObject);
 
+  user.otp = otp
+  await user.save()
+
+  res.status(200).send(user);
 })
 
 //Verify User via OTP
-routes.post('/verify', (req, res) => {
+routes.post('/verify', async (req, res) => {
   const { otp, aadhaar } = req.body
+  const user = await User.findOne({ aadhaar: aadhaar })
 
-  User.findOne({ aadhaar: aadhaar }).then(user => {
-    //No user found
-    if (!user) {
-      return res.status(401).send({
-        success: false,
-        message: "Could not find the user."
-      })
-    }
+  //No user found
+  if (!user) {
+    return res.status(401).send({
+      message: "Could not find the user."
+    })
+  }
 
-    if (user.otp == otp) {
-      return res.status(200).send({
-        message: "Verified"
-      })
+  if (user.otp == otp) {
+    return res.status(200).send({
+      message: "Verified"
+    })
 
-    } else {
-      return res.status(401).send({
-        message: "Unauthorized"
-      })
-    }
-  })
+  } else {
+    return res.status(402).send({
+      message: "Unauthorized"
+    })
+  }
 
 })
 

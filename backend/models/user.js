@@ -17,7 +17,8 @@ const userSchema = new Schema({
     required: [true, '*Type is required'],
   },
   blocked: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   otp: {
     type: String

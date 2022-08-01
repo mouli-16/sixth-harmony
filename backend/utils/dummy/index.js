@@ -1,5 +1,5 @@
-const config = require('../config/config')
-const aadhaarDummy = require("./dummy/aadhaarDummy.json")
+const config = require('../../config/config')
+const aadhaarDummy = require("./aadhaarDummy.json")
 let aadhaarPrivate = []
 try {
   console.log(config.AADHAAR_PRIVATE_FILE)
@@ -22,4 +22,8 @@ function getDetailsFromAadhaar(aadhaar) {
   return undefined
 }
 
-module.exports = getDetailsFromAadhaar
+module.exports = {
+  getDetailsFromAadhaar,
+  aadhaarDummy,
+  aadhaarPrivate
+}
