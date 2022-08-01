@@ -1,0 +1,8 @@
+*
+!config
+!middlewares
+!models
+!routes
+!utils
+!index.js
+!package*.json
