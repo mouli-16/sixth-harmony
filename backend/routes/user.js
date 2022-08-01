@@ -1,5 +1,5 @@
 const { Router } = require('express')
-
+const { generateToken, authenticate } = require('../middlewares')
 const { User } = require('../models')
 const { getDetailsFromAadhaar } = require('../utils/dummy')
 const { sendOTP } = require('../utils/otp')
@@ -49,6 +49,10 @@ routes.post('/verify', async (req, res) => {
   }
 
   if (user.otp == otp) {
+    const token = generateToken(user._id)
+    res.cookie("access_token", token, {
+      httpOnly: true,
+    })
     return res.status(200).send({
       message: "Verified"
     })
@@ -58,7 +62,10 @@ routes.post('/verify', async (req, res) => {
       message: "Unauthorized"
     })
   }
+})
 
+routes.get("/logout",authenticate,(req,res)=>{
+  return res.clearCookie("access_token").status(200).json("Successfuly Logged out")
 })
 
 module.exports = routes

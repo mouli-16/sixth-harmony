@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const cookieParser = require("cookie-parser");
 
 const config = require('./config/config')
 const routes = require('./routes')
@@ -13,6 +14,7 @@ const app = express()
  * Middlewares
  */
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors({
   origin: config.CORS_ORIGINS
 }))

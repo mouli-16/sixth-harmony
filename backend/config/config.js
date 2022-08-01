@@ -24,7 +24,7 @@ convict.addFormat({
     if (!fs.existsSync(path))
       // throw new Error("Path must exist")
       console.log(`${path} not exist`)
-      return
+    return
   }
 })
 
@@ -37,10 +37,10 @@ const config = convict({
   },
 
   DB_URI: {
-    doc:'hello',
-    format:'*',
+    doc: 'hello',
+    format: '*',
     default: '',
-    env:'DB_URI',
+    env: 'DB_URI',
   },
 
   PORT: {
@@ -68,7 +68,7 @@ const config = convict({
   OTP_PROVIDER: {
     doc: 'OTP Provider',
     format: (val) => {
-      if(val && ( val==='twilio' || val==='aws.sns' )){
+      if (val && (val === 'twilio' || val === 'aws.sns')) {
         return
       }
       throw Error('Wrong value for OTP_PROVIDER')
@@ -116,6 +116,13 @@ const config = convict({
     env: 'WEB3_TOKEN',
     default: '',
     sensitive: true
+  },
+  SECRET_KEY: {
+    doc: "Secret Key for JWT Cookie Auth",
+    default: '8ab54fd2e2fbdf298052cbd2e4018221abb7d33',
+    env: 'SECRET_KEY',
+    arg: 'secret',
+    sensitive: true,
   }
 })
 
