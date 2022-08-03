@@ -22,7 +22,7 @@ app.use(cors({
 /**
  * Routes
  */
-app.use(routes.user)
+app.use(routes.auth)
 app.use(routes.storage)
 
 

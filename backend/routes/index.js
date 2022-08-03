@@ -1,4 +1,4 @@
 module.exports = {
-  user: require('./user'),
+  auth: require('./auth'),
   storage: require('./storage')
 }

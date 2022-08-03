@@ -54,7 +54,8 @@ routes.post('/verify', async (req, res) => {
       httpOnly: true,
     })
     return res.status(200).send({
-      message: "Verified"
+      message: "Verified",
+      token :token
     })
 
   } else {

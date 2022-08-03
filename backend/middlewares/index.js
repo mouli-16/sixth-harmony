@@ -13,6 +13,8 @@ function authenticate(req, res, next) {
     })
   try {
     const data = jwt.verify(token, config.SECRET_KEY)
+    console.log(data.sub)
+    res.locals.sub = data.sub
     return next()
   } catch {
     return res.status(403).send({
@@ -20,5 +22,6 @@ function authenticate(req, res, next) {
     })
   }
 }
+
 
 module.exports = { generateToken, authenticate }

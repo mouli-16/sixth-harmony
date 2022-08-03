@@ -22,7 +22,19 @@ const userSchema = new Schema({
   },
   otp: {
     type: String
-  }
+  },
+  files:[
+    { 
+        name:{
+            type:String,
+            
+        },
+        cid:{
+            type:String,
+            
+        },
+    }
+]
 });
 
 const User = mongoose.model('users', userSchema);

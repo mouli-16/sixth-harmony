@@ -4,25 +4,25 @@ x-restart-policy: &restart_policy
   restart: unless-stopped
 
 services:
-  backend:
-    << : *restart_policy
-    build:
-      context: .
-      dockerfile: Dockerfile
+  # backend:
+  #   << : *restart_policy
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
     # command: >-
     #   sh -c "
     #     npm i --only=dev
     #     && npm run dev
     #   "
-    container_name: backend
-    depends_on:
-      - mongo
-    env_file:
-      - .env
-    volumes:
-      - ./aadhaarPrivate.json:/app/aadhaarPrivate.json
-    ports:
-      - "${PORT:-8000}:${PORT:-8000}"
+  #   container_name: backend
+  #   depends_on:
+  #     - mongo
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./aadhaarPrivate.json:/app/aadhaarPrivate.json
+  #   ports:
+  #     - "${PORT:-8000}:${PORT:-8000}"
 
   mongo:
     << : *restart_policy
