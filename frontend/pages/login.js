@@ -1,6 +1,6 @@
 import Head from "next/head";
+import LoginContainer from "../components/LoginContainer";
 import ContactComponent from "../components/ContactComponent";
-import TopContainer from "../components/TopContainer";
 
 export default function Home() {
   return (
@@ -22,10 +22,8 @@ export default function Home() {
         ></link>
       </Head>
 
-      <TopContainer />
-
+      <LoginContainer />
       <ContactComponent />
-
       <footer className="footer">
         <h5> &copy; Ministry of Ports, Shipping & Waterways</h5>
         <script

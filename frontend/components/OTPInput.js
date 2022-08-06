@@ -22,7 +22,7 @@ const OTPInput = (props) => {
           >
             <TextField
               size='small'
-              sx={{ width: '0.75' }}
+              sx={{ width: '0.6', mt:3}}
               InputProps={{
                 style: { fontSize: 40 },
                 inputMode: 'numeric',
