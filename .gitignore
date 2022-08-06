@@ -163,6 +163,3 @@ dist
 
 # Ignore code-workspaces
 *.code-workspace
-
-# Aadhar Data
-aadhaarPrivate.json
