@@ -22,9 +22,9 @@ app.use(cors({
 /**
  * Routes
  */
-app.use(routes.auth)
-app.use(routes.storage)
-
+app.use('/auth', routes.auth)
+app.use('/storage', routes.storage)
+app.use('/application', routes.application)
 
 ;(async () => {
   await mongoose.connect(
