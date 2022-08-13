@@ -13,9 +13,9 @@ function DashContainer() {
               <Navigation/>
             </Col>
             <Col xs={12} md={8} className="dash-right">
-            {/* <h6>Ministry of Ports, Shipping & Waterways</h6>
-              <h1>SEAGI-LOCKER</h1>
-              <p>
+            {/* <h6>Ministry of Ports, Shipping & Waterways</h6> */}
+              <h1>WELCOME, SRIJAN MAJUMDAR</h1>
+              {/* <p>
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                 used in laying out print, graphic or web designs.
               </p> */}

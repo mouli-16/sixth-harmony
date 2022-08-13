@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ContactComponent from "../components/ContactComponent";
 import TopContainer from "../components/TopContainer";
+import ServiceComponent from "../components/ServiceComponent.js";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       </Head>
 
       <TopContainer />
+      <ServiceComponent />
 
       <ContactComponent />
 
