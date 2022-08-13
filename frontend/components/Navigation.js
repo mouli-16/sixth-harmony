@@ -20,25 +20,37 @@ const Navigation = ({ type }) => {
             <FiHome className="navbarIcon" />
             <span className="navbarListItemText">Home</span>
           </li>
+          <li className="navbarListItem">
+            <FiHome className="navbarIcon" />
+            <span className="navbarListItemText">Issued Documents</span>
+          </li>
           {/* </Link> */}
           {/* <Link style={{textDecoration:"none"}}> */}
           <li className="navbarListItem">
             <FiPieChart className="navbarIcon" />
 
-            <span className="navbarListItemText">Dashboard</span>
+            <span className="navbarListItemText">Search Documents</span>
           </li>
           {/* </Link> */}
           {/* <Link href="/edit" style={{textDecoration:"none"}}> */}
           <li className="navbarListItem">
             <FiEdit className="navbarIcon" />
-            <span className="navbarListItemText">Edit Profile</span>
+            <span className="navbarListItemText">Registrations</span>
+          </li>
+          <li className="navbarListItem">
+            <FiEdit className="navbarIcon" />
+            <span className="navbarListItemText">Drive</span>
+          </li>
+          <li className="navbarListItem">
+            <FiEdit className="navbarIcon" />
+            <span className="navbarListItemText">About SeaGiLocker</span>
           </li>
           {/* </Link> */}
           {/* <Link href="/testimonials" style={{textDecoration:"none"}}> */}
-          <li className="navbarListItem">
+          {/* <li className="navbarListItem">
             <BsPeople className="navbarIcon" />
-            <span className="navbarListItemText">Testimonials</span>
-          </li>
+            <span className="navbarListItemText">Br</span>
+          </li> */}
           {/* </Link> */}
         </ul>
         <div className="profile">

@@ -2,6 +2,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Ubuntu:wght@300&display=swap");
 
+
+/* GLOBAL */
 html,
 body {
   padding: 0;
@@ -37,20 +39,6 @@ a {
   height: 65vh;
   background-repeat: no-repeat;
 }
-.backgroundDash {
-  background-image: url("../public/assets/bg.png");
-  height: 95vh;
-  width: 100vw;
-  position: fixed;
-  z-index: -1;
-  top: 0px;
-}
-.textureDash {
-  background-image: url("../public/assets/texture.png");
-  background-attachment: fixed;
-  height: 95vh;
-  background-repeat: no-repeat;
-}
 .container-top {
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -59,7 +47,10 @@ a {
   /* border: 2px solid red; */
 }
 
-/* Top Section  */
+
+
+
+/* Top Container  */
 .section-top {
   min-width: 80vw;
   min-height: 80vh;
@@ -68,15 +59,7 @@ a {
   align-items: center;
   /* border: 2px solid red; */
 }
-.dash-top {
-  min-width: 98vw;
-  min-height: 98vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  /* border: 2px solid green; */
-}
+
 .section-top-right {
   background-color: rgba(255, 255, 255, 0.315);
   backdrop-filter: blur(10px);
@@ -84,14 +67,27 @@ a {
   border-radius: 10px;
   /* border: 2px solid red; */
 }
-.dash-top-right {
-  background-color: rgba(255, 255, 255, 0.315);
-  backdrop-filter: blur(10px);
-  padding: 50px;
-  border-radius: 10px;
-  /* border: 2px solid red; */
-  height: 85vh;
+.section-top-right h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 10px;
 }
+.section-top-right h6 {
+  font-weight: 900;
+  color: brown;
+  letter-spacing: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.section-top-right p{
+  font-weight: 200;
+}
+
+
+
+
+/* LOGIN CONTAINER */
 .login-top {
   min-width: 75vw;
   min-height: 80vh;
@@ -114,17 +110,51 @@ a {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.section-top-right h1 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: 600;
+.login-top-right h2 {
+  font-weight: 900;
   letter-spacing: 10px;
 }
-.title h1 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: 600;
+.login-top-right h6 {
+  font-weight: 700;
+  color: brown;
   letter-spacing: 10px;
+}
+
+
+
+
+
+/* DASHBOARD */
+.backgroundDash {
+  background-image: url("../public/assets/bg.png");
+  height: 95vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+  top: 0px;
+}
+.textureDash {
+  background-image: url("../public/assets/texture.png");
+  background-attachment: fixed;
+  height: 95vh;
+  background-repeat: no-repeat;
+}
+.dash-top {
+  min-width: 98vw;
+  min-height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  /* border: 2px solid green; */
+}
+.dash-top-right {
+  background-color: rgba(255, 255, 255, 0.315);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 10px;
+  /* border: 2px solid red; */
+  height: 85vh;
 }
 .dash-top-right h2 {
   margin-top: 20px;
@@ -132,16 +162,28 @@ a {
   font-weight: 900;
   letter-spacing: 3px;
 }
-.login-top-right h2 {
-  font-weight: 900;
-  letter-spacing: 10px;
-}
-.section-top-right h6 {
+
+.dash-top-right h6 {
   font-weight: 900;
   color: brown;
   letter-spacing: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.dash-right{
+  display: flex;
+  justify-content: end;
+}
+.dash-right h1{
+  font-weight: 900;
+}
+/* NAVIGATION */
+.title h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 10px;
 }
 .title h6 {
   font-weight: 900;
@@ -150,21 +192,64 @@ a {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.dash-top-right h6 {
-  font-weight: 900;
-  color: brown;
-  letter-spacing: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.navigation{
+  height: 90vh;
+  width: 25vw;
+  padding: 30px;
+  margin: 30px;
+  background-color: rgba(255, 255, 255, 0.315);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 2px solid #ffecc9;
 }
-.section-top-right p{
-  font-weight: 200;
+.navigationWrapper{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9rem;
 }
-.login-top-right h6 {
+
+.navbarlist{
+  padding:0;
+  margin: 0;
+  list-style: none;
+}
+.navbarListItem{
+  display: flex;
+  align-items: center;
+  color: black;
+  /* margin: 20px; */
+  margin-bottom: 30px;
+  /* border: 2px solid red; */
+}
+.navbarIcon{
+  margin-right: 15px;
+}
+.navbarListItemText{
   font-weight: 700;
-  color: brown;
-  letter-spacing: 10px;
 }
+.profile{
+  display: flex;
+  align-items: center;
+  /* border: 2px solid red; */
+  width: 20%;
+}
+.profileImg{
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.profileName{
+  font-weight: 500;
+  /* border: 2px solid red; */
+  width: 120px;
+}
+.logout{
+  color: rgb(160, 160, 160);
+}
+
+/* BTNS */
 .btn-custom {
   background-color: tomato;
   color: white;
@@ -178,27 +263,20 @@ a {
 .btn-verify {
   margin-top: 2rem;
 }
-.plate-img-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: -80px;
-  margin-bottom: 30px;
-}
-.plate-img {
-  width: 100px;
-}
+
+
+
 
 /* Service Container  */
 .service-container {
-  min-height: 50vh;
-}
-.service-img {
-  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 35vh;
 }
 .service-container-bg {
   background-color: white;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 /* About Component  */
 .about-container-bg {
@@ -210,6 +288,8 @@ a {
   align-items: center;
   flex-direction: column;
 }
+
+
 
 /* Download Component  */
 .download-container-bg {
@@ -246,6 +326,8 @@ a {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.11) 0px 7px 30px 0px;
 }
+
+
 /* Contact Component  */
 .contact-component {
   padding-left: 20px;
@@ -256,12 +338,15 @@ a {
   align-items: center;
 }
 .contact-container-bg {
-  background-color: white;
+  background-color: rgb(255, 214, 175);
 }
 .fa {
   margin-left: 5px;
   font-size: 20px;
 }
+
+
+
 /* Footer  */
 .footer {
   background-color: rgb(43, 31, 20);
@@ -271,34 +356,4 @@ a {
   justify-content: center;
   align-items: center;
 }
-.navigation{
-  height: 90vh;
-  padding: 30px;
-  margin: 30px;
-  background-color: rgba(255, 255, 255, 0.315);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  border: 2px solid red;
-}
 
-.profile{
-  display: flex;
-  align-items: center;
-  /* border: 2px solid red; */
-  width: 20%;
-}
-.profileImg{
-  width: 40px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 20px;
-}
-.profileName{
-  font-weight: 500;
-  /* border: 2px solid red; */
-  width: 120px;
-}
-.logout{
-  color: rgb(160, 160, 160);
-}
