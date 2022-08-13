@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const { Application } = require('../models')
 const { authenticate } = require('../middlewares')
+const db = require('../documents.json')
 
 const routes = Router()
 
@@ -44,5 +45,6 @@ routes
   })
   // /* Query routes for admin dashboard */
   // .get('/q', ...)
+  
 
 module.exports = routes

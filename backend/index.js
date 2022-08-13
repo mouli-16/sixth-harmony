@@ -25,6 +25,7 @@ app.use(cors({
 app.use('/auth', routes.auth)
 app.use('/storage', routes.storage)
 app.use('/application', routes.application)
+app.use('/admin',routes.admin)
 
 ;(async () => {
   await mongoose.connect(
