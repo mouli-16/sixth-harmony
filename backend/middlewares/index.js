@@ -13,7 +13,6 @@ function authenticate(req, res, next) {
     })
   try {
     const data = jwt.verify(token, config.SECRET_KEY)
-    console.log(data.sub)
     res.locals.sub = data.sub
     return next()
   } catch {
@@ -21,6 +20,30 @@ function authenticate(req, res, next) {
       message: "Unauthorized"
     })
   }
+}
+
+function authenticateAdmin(req,res,next){
+  const token  = req.cookies.access_token
+  if (!token)
+  return res.status(403).send({
+    message: "Unauthorized"
+  })
+  try{
+    const data = jwt.verify(token, config.SECRET_KEY)
+    if(data.type=="user"){
+      return res.status(403).send({
+        message: "Unauthorized"
+      })
+    }
+    if(data.type=="admin")
+    return next()
+  }
+  catch(err){
+    return res.status(403).send({
+      message: "Unauthorized"
+    })
+  }
+
 }
 
 

@@ -7,7 +7,7 @@ const config = require('./config/config')
 const routes = require('./routes')
 
 const { PORT, DB_URI } = config
-
+const cron = require('./config/cron-taks')
 const app = express()
 
 /**
