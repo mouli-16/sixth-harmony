@@ -17,11 +17,11 @@ function DashContainer() {
       {/* <Navigation/> */}
       <div className="h-screen w-screen position-fixed z-9999">
           {/* left side */}
-          <div className="h-screen position-fixed bg-white shadow-lg w-1/6">
+          <div className="h-screen position-fixed shadow-lg w-1/6">
               <Navigation setIssued = {setIssued} setHome={setHome} setProfile={setProfile} setRegistration={setRegistration} setDrive={setDrive}/>
           </div>
           {/* right side */}
-          <div className="h-screen position-fixed -z-10 w-full ml-64">
+          <div className="h-screen position-fixed -z-10 w-full ml-80">
                 { home ? <Home/> : <></>}
                 { issued ? <IssuedDocuments/> : <></>}
                 { profile ? <Profile/> : <></>}

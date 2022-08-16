@@ -357,3 +357,16 @@ a {
   align-items: center;
 }
 
+/* .card-container{
+  margin:10px;
+  float:left;
+  dis;
+} */
+
+.bodyH{
+  height: 100%;
+ position: absolute;
+ overflow: auto;
+ 
+}
+

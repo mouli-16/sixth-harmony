@@ -75,10 +75,10 @@ export default function Navigation(props) {
     p(true);
   }
   return (
-    <div className="py-4 w-full">
+    <div className="py-4 w-full ">
       <ul className="space-y-2">
         <li>
-          <a  onClick={() => setProp(props.setHome)} className="flex h-14 items-center p-2 text-base font-normal text-black rounded-lg dark:text-black  hover:text-white hover:bg-orange-300 selec hover:no-underline">
+          <a  onClick={() => setProp(props.setHome)} className="flex h-14 items-center p-2 text-base font-normal text-black rounded-lg dark:text-black  hover:text-white hover:bg-blue-100 selec hover:no-underline">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
             </svg>
@@ -86,7 +86,7 @@ export default function Navigation(props) {
           </a>
         </li>
         <li>
-          <a onClick={() => setProp(props.setIssued)} className="flex h-14 items-center p-2 text-base font-normal text-black rounded-lg dark:text-black hover:text-white hover:bg-orange-100 dark:hover:bg-orange-300 hover:no-underline">
+          <a onClick={() => setProp(props.setIssued)} className="flex h-14 items-center p-2 text-base font-normal text-black rounded-lg dark:text-black hover:text-white hover:bg-blue-100 dark:hover:bg-orange-300 hover:no-underline">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
             </svg>
