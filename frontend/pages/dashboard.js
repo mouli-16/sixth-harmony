@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ContactComponent from "../components/ContactComponent";
 import DashContainer from "../components/DashContainer";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
@@ -21,11 +22,11 @@ export default function Home() {
           crossorigin="anonymous"
         ></link>
       </Head>
-
+      <Navbar/>
       <DashContainer />
 
 
-      <footer className="footer">
+      {/* <footer className="footer">
         <h5> &copy; Ministry of Ports, Shipping & Waterways</h5>
         <script
           src="https://unpkg.com/react/umd/react.production.min.js"
@@ -41,7 +42,7 @@ export default function Home() {
           src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
           crossorigin
         ></script>
-      </footer>
+      </footer> */}
     </div>
   );
 }
