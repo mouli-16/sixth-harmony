@@ -2,13 +2,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Ubuntu:wght@300&display=swap");
 
-
 /* GLOBAL */
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Nunito", sans-serif;
+  height: 100%;
   /* font-family: "Ubuntu", sans-serif; */
 }
 
@@ -355,5 +355,18 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* .card-container{
+  margin:10px;
+  float:left;
+  dis;
+} */
+
+.bodyH{
+  height: 100%;
+ position: absolute;
+ overflow: auto;
+ 
 }
 
