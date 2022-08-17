@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 export default function Profile() {
   return (
-    <div className="pr-5 w-5/6 ml-2">
+    <div className="pr-5 ml-2">
       <div className="shadow-lg rounded-lg">
         <div className="flex  mt-4 ">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-4 mt-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

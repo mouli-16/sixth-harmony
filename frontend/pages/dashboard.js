@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-visible">
       <Head>
         <title>SEAGI-LOCKER - Landign Page</title>
         <link rel="icon" href="/favicon.ico" />

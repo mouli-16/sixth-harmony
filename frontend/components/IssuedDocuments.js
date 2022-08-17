@@ -1,7 +1,7 @@
 
 export default function IssuedDocuments(){
   return(
-    <div className="">
+    <div className="w-full">
         <div className="font-sans font-semibold text-lg text-orange-700 mt-3 ">
                       Welcome, Ruchika
         </div>
@@ -9,10 +9,10 @@ export default function IssuedDocuments(){
             All your documents will appear here.
         </p>
         <div className="pr-5">
-            <div className="w-5/6 h-20 mt-3 shadow-lg rounded-lg"></div>
-            <div className="w-5/6 h-20 mt-3 shadow-lg rounded-lg"></div>
-            <div className="w-5/6 h-20 mt-3 shadow-lg rounded-lg"></div>
-            <div className="w-5/6 h-20 mt-3 shadow-lg rounded-lg"></div>
+            <div className="h-20 mt-3 shadow-lg rounded-lg"></div>
+            <div className="h-20 mt-3 shadow-lg rounded-lg"></div>
+            <div className="h-20 mt-3 shadow-lg rounded-lg"></div>
+            <div className=" h-20 mt-3 shadow-lg rounded-lg"></div>
         </div> 
     </div>
   );
