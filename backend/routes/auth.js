@@ -1,16 +1,16 @@
 const { Router } = require('express')
 const { generateToken, authenticate } = require('../middlewares')
-const { User } = require('../models')
+const { User, Admin } = require('../models')
 const { getDetailsFromAadhaar } = require('../utils/dummy')
 const { sendOTP } = require('../utils/otp')
 
 const routes = Router()
 
 routes.post('/otp', async (req, res) => {
-  const { aadhaar, type } = req.body;
+  const { aadhaar } = req.body;
   const userDetails = getDetailsFromAadhaar(aadhaar)
 
-  if(!userDetails) {
+  if (!userDetails) {
     return res.status(404).json()
   }
 
@@ -19,7 +19,7 @@ routes.post('/otp', async (req, res) => {
   //No user found
   if (!user) {
     const name = userDetails.name
-    user = await User.create({ name, aadhaar, type })
+    user = await User.create({ name, aadhaar })
   }
 
   let otp
@@ -55,7 +55,7 @@ routes.post('/verify', async (req, res) => {
     })
     return res.status(200).send({
       message: "Verified",
-      token :token
+      token: token
     })
 
   } else {
@@ -65,7 +65,31 @@ routes.post('/verify', async (req, res) => {
   }
 })
 
-routes.get("/logout",authenticate,(req,res)=>{
+// admin login
+routes.post("/admin", async (req, res) => {
+  const { username, password } = req.body
+  let admin = await Admin.findOne({ 'username': username })
+
+  if (!admin) {
+    return res.status(403).send({
+      message: "Only Admins can access this resource"
+    })
+  }
+  await admin.comparePassword(password, (err, isMatch = false) => {
+    if (err || !isMatch) return res.status(402).send({ message: "Unauthorized" })
+    const token = generateToken(admin._id, true)
+    res.cookie("access_token", token, {
+      httpOnly: true,
+    })
+    return res.status(200).send({
+      message: "Successful Login",
+      token: token
+    })
+  })
+
+})
+
+routes.get("/logout", authenticate, (req, res) => {
   return res.clearCookie("access_token").status(200).json("Successfuly Logged out")
 })
 

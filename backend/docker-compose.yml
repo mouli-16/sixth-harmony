@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 x-restart-policy: &restart_policy
   restart: unless-stopped
@@ -9,11 +9,11 @@ services:
   #   build:
   #     context: .
   #     dockerfile: Dockerfile
-    # command: >-
-    #   sh -c "
-    #     npm i --only=dev
-    #     && npm run dev
-    #   "
+  #   command: >-
+  #     sh -c "
+  #       npm i --only=dev
+  #       && npm run dev
+  #     "
   #   container_name: backend
   #   depends_on:
   #     - mongo
@@ -25,7 +25,7 @@ services:
   #     - "${PORT:-8000}:${PORT:-8000}"
 
   mongo:
-    << : *restart_policy
+    <<: *restart_policy
     image: mongo:5.0.9
     container_name: mongo
     environment:
@@ -34,11 +34,13 @@ services:
       - MONGO_INITDB_DATABASE=${DB_DBNAME:-mongo_db}
     volumes:
       - ./db-data:/data/db
-    expose:
-      - 27017
+    # expose:
+    #   - 27017
+    ports:
+      - 27017:27017
 
   mongo-express:
-    << : *restart_policy
+    <<: *restart_policy
     image: mongo-express
     depends_on:
       - mongo

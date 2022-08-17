@@ -12,10 +12,6 @@ const userSchema = new Schema({
     unique: true,
     length: [12]
   },
-  type: {
-    type: String,
-    required: [true, '*Type is required'],
-  },
   blocked: {
     type: Boolean,
     default: false
