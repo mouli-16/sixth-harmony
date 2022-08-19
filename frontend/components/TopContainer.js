@@ -29,8 +29,8 @@ function TopContainer() {
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                 used in laying out print, graphic or web designs.
               </p>
-              <Link href="/login">
-              <button className="btn btn-custom">Login</button></Link>
+              <Link href="/login" >
+              <button className="btn btn-custom mt-6">Login</button></Link>
             </Col>
           </Row>
         </Container>

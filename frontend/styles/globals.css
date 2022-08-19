@@ -2,14 +2,17 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Ubuntu:wght@300&display=swap");
 
-
 /* GLOBAL */
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Nunito", sans-serif;
+<<<<<<< HEAD
   box-sizing: border-box;
+=======
+  height: 100%;
+>>>>>>> 2cad2b925aa83481d9de02fda0890333adfed9ba
   /* font-family: "Ubuntu", sans-serif; */
 }
 
@@ -373,6 +376,7 @@ a {
 }
 
 
+
 /* TABLE */
 
 .tableContainer{
@@ -380,3 +384,17 @@ a {
   /* border: 2px solid red; */
   width: 90vw;
 }
+
+/* .card-container{
+  margin:10px;
+  float:left;
+  dis;
+} */
+
+.bodyH{
+  height: 100%;
+
+ overflow: auto;
+ 
+}
+

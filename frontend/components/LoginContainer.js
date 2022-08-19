@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
+const axios = require('axios').default;
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -10,32 +11,51 @@ import { useState } from "react";
 
 import OTPInput from "./OTPInput";
 import { Container, Row, Col } from "react-bootstrap";
-const LoginA = ({ setIsDone }) => {
+
+import { Component } from 'react';
+import Otp from 'react-otp-input';
+import { width } from "@mui/system";
+
+
+const LoginA = ({ setIsDone, setAadhaar }) => {
   const name = useRef();
   const aadhar = useRef();
-  const handleSubmit = async (e) => {
+
+  //Send OTP
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-      setIsDone(true);
-      const entry = {
-        name: name.current.value,
-        aadhaarNumber: aadhar.current.value,
-      };
-      console.log(entry);
+    const entry = {
+      name: name.current.value,
+      aadhaar: aadhar.current.value,
+    };
+    console.log(entry);
 
+    try {
+      let res = await axios.post('http://localhost:5000/auth/otp', entry)
+      console.log(res)
+      if (res.status == 200) {
+        setAadhaar(aadhar.current.value);
+        setIsDone(true);
+      }
 
-  };
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
 
   return (
     <>
-      <div className="background"></div>
-      <div className="texture">
-        <Container className="container-top">
+      <div className="background "></div>
+      <div className="texture mb-10">
+        <Container className="container-top ">
           <Row className="login-top">
-            <Col xs={12} md={6} className="login-top-right shadow">
+            <Col xs={12} md={5} className="login-top-right shadow">
               <h6>Ministry of Ports, Shipping & Waterways</h6>
-              <h2>SEAGI-LOCKER</h2>
-              <form>
+              <h2 className="header-name mt-4 mb-4" >SEAGI-LOCKER</h2>
+              <form className="input-form">
                 <input
                   type="text"
                   name="first"
@@ -52,7 +72,7 @@ const LoginA = ({ setIsDone }) => {
                 />
                 <button
                   className="btn btn-login btn-custom"
-                  onClick={(e) => handleSubmit(e)}
+                  onClick={(e) => handleLogin(e)}
                 >
                   Login
                 </button>
@@ -65,7 +85,45 @@ const LoginA = ({ setIsDone }) => {
   );
 };
 
-const LoginB = () => {
+const LoginB = ({ aadhaar }) => {
+  console.log(aadhaar, 'AAA');
+
+  const [otp, setOtp] = useState('');
+
+  // state = { otp: '' };
+
+  const handleChange = (OTP) => setOtp(OTP);
+
+  //verify OTP
+  const handleVerify = async (e) => {
+    e.preventDefault();
+    console.log(otp)
+    // setIsDone(true);
+    const entry = {
+      otp,
+      aadhaar
+    };
+    console.log(entry);
+
+    try {
+      var res = await axios.post('http://localhost:5000/auth/verify', entry)
+      console.log(res)
+      if (res.status === 200) {
+        localStorage.setItem('access_token', res.data.token)
+        try {
+          console.log(
+            await axios.get('http://localhost:5000/test', { headers: { 'X-Access-Token': res.data.token } })
+          );
+        } catch (_e) {
+          console.log(_e);
+        }
+      }
+    } catch (e) {
+      console.log(e)
+    }
+
+  };
+
   return (
     <>
       <div className="background"></div>
@@ -88,14 +146,27 @@ const LoginB = () => {
                 <Typography>
                   {"Enter 6 digit verification code sent to 91XXXXX724"}
                 </Typography>
-                <OTPInput numInputs={6} />
+                {/* <OTPInput numInputs={6} /> */}
+
+                <Otp className="otp mt-6"
+                  value={otp}
+                  onChange={handleChange}
+                  numInputs={6}
+                  shouldAutoFocus={true}
+                  separator={<div className="span mr-3 ml-3"></div>}
+                  containerStyle={
+                    { fontSize: 25, }
+                  }
+                />
+
                 <Link href="/dashboard">
-                <button
-                  className="btn btn-login btn-custom btn-verify"
-                  // onClick={(e) => handleSubmit(e)}
-                >
-                  Verify
-                </button>
+                  <button
+                    className="btn btn-login btn-custom btn-verify w-2/3"
+                    onClick={(e) => handleVerify(e)}
+
+                  >
+                    Verify
+                  </button>
                 </Link>
               </Box>
             </Col>
@@ -158,7 +229,12 @@ const AdminLogin = () => {
 
 const LoginContainer = ({isAdmin}) => {
   const [isDone, setIsDone] = useState(false);
+<<<<<<< HEAD
   return <>{isAdmin ? <AdminLogin/> : (!isDone ? <LoginA setIsDone={setIsDone} /> : <LoginB />)}</>;
+=======
+  const [aadhaar, setAadhaar] = useState();
+  return <>{!isDone && !aadhaar ? <LoginA setIsDone={setIsDone} setAadhaar={setAadhaar} /> : <LoginB aadhaar={aadhaar} />}</>;
+>>>>>>> 2cad2b925aa83481d9de02fda0890333adfed9ba
 };
 
 export default LoginContainer;

@@ -19,9 +19,9 @@ const applicationSchema = new Schema({
     type: String,
     required: [true, '*Type is required']
   },
-  pending: {
-    type: Boolean,
-    default: true
+  status: {
+    type: String,
+    default: "pending"
   }
 })
 
