@@ -136,7 +136,7 @@ const LoginB = ({ aadhaar }) => {
                   Verify
                 </Typography>
                 <Typography>
-                  {"Enter 6 digit verification code sent to 91XXXXX724"}
+                  {"Enter 6 digit verification code sent to your number"}
                 </Typography>
                 {/* <OTPInput numInputs={6} /> */}
 

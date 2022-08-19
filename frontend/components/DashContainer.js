@@ -5,7 +5,7 @@ import Profile from "./Profile";
 import Home from "./Home";
 import Drive from "./Drive";
 function DashContainer() {
-  const [home,setHome] = React.useState(false);
+  const [home,setHome] = React.useState(true);
   const [issued,setIssued] = React.useState(false);
   const [profile,setProfile] = React.useState(false);
   const [registration,setRegistration] = React.useState(false);

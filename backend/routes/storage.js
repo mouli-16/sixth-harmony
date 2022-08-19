@@ -40,10 +40,8 @@ routes.post('/upload', async (req, res) => {
 
 routes.get('/getfiles',async(req,res)=>{
   const sub = res.locals.sub
-
   try{
     const user = await User.findById(sub,'files');
-
   return res.status(200).send(user)
   }catch(e){
     return res.status(400).send({'message':"Error"})

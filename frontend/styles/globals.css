@@ -77,7 +77,7 @@ a {
 .section-top-right h6 {
   font-weight: 900;
   color: brown;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -118,7 +118,7 @@ a {
 .login-top-right h6 {
   font-weight: 700;
   color: brown;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
 }
 
 
@@ -167,7 +167,7 @@ a {
 .dash-top-right h6 {
   font-weight: 900;
   color: brown;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -191,7 +191,7 @@ a {
 .Admindash-top h6{
   font-weight: 700;
     color: brown;
-    letter-spacing: 10px;
+    letter-spacing: 7px;
 }
 /* NAVIGATION */
 .title h1 {
@@ -203,7 +203,7 @@ a {
 .title h6 {
   font-weight: 900;
   color: brown;
-  letter-spacing: 10px;
+  letter-spacing: 7px;
   margin-top: 20px;
   margin-bottom: 20px;
 }

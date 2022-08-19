@@ -64,7 +64,7 @@ export default function AdminDash() {
           <Row className="Admindash-top">
             <Col xs={0} md={6}>
               <h6>Ministry of Ports, Shipping & Waterways</h6>
-              <h2>SEAGI-LOCKER</h2>
+              <h2 className="proj-name mt-6">SEAGI-LOCKER</h2>
             </Col>
           </Row>
           <Row className="tableContainer">

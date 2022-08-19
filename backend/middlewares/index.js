@@ -22,7 +22,6 @@ function authenticate(req, res, next) {
   try {
     const data = jwt.verify(token, config.SECRET_KEY)
     res.locals.sub = data.sub
-    res.locals.admin = data.admin
     return next()
   } catch {
     return res.status(403).send({
