@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="overflow-visible">
       <Head>
-        <title>SEAGI-LOCKER - Landign Page</title>
+        <title>SEAGI-LOCKER - Landing Page</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"

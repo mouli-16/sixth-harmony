@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 
 const OTPInput = (props) => {
   const { numInputs = 6 } = props
-
+  
   return (
     <Box component='form' noValidate sx={{ mt: 1 }}>
       <Grid
@@ -22,9 +22,9 @@ const OTPInput = (props) => {
           >
             <TextField
               size='small'
-              sx={{ width: '0.6', mt:3}}
+              sx={{ width: '0.4', mt:3}}
               InputProps={{
-                style: { fontSize: 40 },
+                style: { fontSize: 25 },
                 inputMode: 'numeric',
                 pattern: '[0-9]'
               }}

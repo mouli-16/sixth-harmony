@@ -43,23 +43,22 @@ routes.post('/verify', async (req, res) => {
 
   //No user found
   if (!user) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: "Could not find the user."
     })
   }
 
   if (user.otp == otp) {
     const token = generateToken(user._id)
-    res.cookie("access_token", token, {
-      httpOnly: true,
-    })
-    return res.status(200).send({
+    // res.cookie("access_token", token)
+    
+    return res.status(200).json({
       message: "Verified",
       token: token
     })
 
   } else {
-    return res.status(402).send({
+    return res.status(402).json({
       message: "Unauthorized"
     })
   }
@@ -78,9 +77,9 @@ routes.post("/admin", async (req, res) => {
   await admin.comparePassword(password, (err, isMatch = false) => {
     if (err || !isMatch) return res.status(402).send({ message: "Unauthorized" })
     const token = generateToken(admin._id, true)
-    res.cookie("access_token", token, {
-      httpOnly: true,
-    })
+    // res.cookie("access_token", token, {
+    //   httpOnly: true,
+    // })
     return res.status(200).send({
       message: "Successful Login",
       token: token
@@ -90,7 +89,7 @@ routes.post("/admin", async (req, res) => {
 })
 
 routes.get("/logout", authenticate, (req, res) => {
-  return res.clearCookie("access_token").status(200).json("Successfuly Logged out")
+  return res.status(200).json("Successfuly Logged out")
 })
 
 module.exports = routes

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>SEAGI-LOCKER - Landign Page</title>
+        <title>SEAGI-LOCKER</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"

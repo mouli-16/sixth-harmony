@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
 function generateToken(id, admin = false) {
-  return jwt.sign({ 'sub': id, 'admin': admin }, config.SECRET_KEY, { expiresIn: '18000s' })
+  return jwt.sign({ 'sub': id, 'admin': admin }, config.SECRET_KEY, { expiresIn: '180000s' })
 }
 
 function adminOnly(req, res, next) {
@@ -14,7 +14,9 @@ function adminOnly(req, res, next) {
 }
 
 function authenticate(req, res, next) {
-  const token = req.cookies.access_token
+  // const token = req.cookies.access_token
+  console.log(req.headers);
+  const token = req.headers['x-access-token']
   if (!token)
     return res.status(401).send({
       message: "Unauthorized"

@@ -6,17 +6,21 @@ const cookieParser = require("cookie-parser");
 const config = require('./config/config')
 const routes = require('./routes')
 
-const { PORT, DB_URI } = config
-const cron = require('./config/cron-taks')
+const { PORT, DB_URI, CORS_ORIGINS } = config
+// const cron = require('./config/cron-taks')
 const app = express()
-
+console.log(CORS_ORIGINS);
 /**
  * Middlewares
  */
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: config.CORS_ORIGINS
+  origin: CORS_ORIGINS,
+  credentials: true,
+  allowedHeaders: [
+    'Origin','X-Requested-With','Content-Type','Accept','X-Access-Token'
+  ]
 }))
 
 /**
