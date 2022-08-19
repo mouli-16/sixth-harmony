@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Box from "@mui/material/Box";
-const axios = require('axios').default;
+import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -106,17 +106,9 @@ const LoginB = ({ aadhaar }) => {
     console.log(entry);
 
     try {
-      var res = await axios.post('http://localhost:5000/auth/verify', entry)
-      console.log(res)
+      let res = await axios.post('http://localhost:5000/auth/verify', entry,{ withCredentials:true })
       if (res.status === 200) {
-        localStorage.setItem('access_token', res.data.token)
-        try {
-          console.log(
-            await axios.get('http://localhost:5000/test', { headers: { 'X-Access-Token': res.data.token } })
-          );
-        } catch (_e) {
-          console.log(_e);
-        }
+        console.log('Verified');
       }
     } catch (e) {
       console.log(e)

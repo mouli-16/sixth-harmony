@@ -49,8 +49,9 @@ routes.post('/verify', async (req, res) => {
   }
 
   if (user.otp == otp) {
+    console.log("Setting Cookie")
     const token = generateToken(user._id)
-    // res.cookie("access_token", token)
+    res.cookie("access_token", token)
     
     return res.status(200).json({
       message: "Verified",
@@ -58,7 +59,7 @@ routes.post('/verify', async (req, res) => {
     })
 
   } else {
-    return res.status(402).json({
+    return res.status(401).json({
       message: "Unauthorized"
     })
   }
@@ -75,11 +76,11 @@ routes.post("/admin", async (req, res) => {
     })
   }
   await admin.comparePassword(password, (err, isMatch = false) => {
-    if (err || !isMatch) return res.status(402).send({ message: "Unauthorized" })
+    if (err || !isMatch) return res.status(401).send({ message: "Unauthorized" })
     const token = generateToken(admin._id, true)
-    // res.cookie("access_token", token, {
-    //   httpOnly: true,
-    // })
+    res.cookie("access_token", token, {
+      httpOnly: true,
+    })
     return res.status(200).send({
       message: "Successful Login",
       token: token
