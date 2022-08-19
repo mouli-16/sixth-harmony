@@ -182,7 +182,7 @@ const AdminLogin = () => {
   const password = useRef();
   const handleSubmit = async (e) => {
     e.preventDefault();
-      console.log(entry);
+    console.log(entry);
   };
 
   return (
@@ -210,12 +210,12 @@ const AdminLogin = () => {
                   ref={password}
                 />
                 <Link href="/adminDashboard">
-                <button
-                  className="btn btn-login btn-custom"
+                  <button
+                    className="btn btn-login btn-custom"
                   // onClick={(e) => handleSubmit(e)}
-                >
-                  Login
-                </button>
+                  >
+                    Login
+                  </button>
                 </Link>
               </form>
             </Col>
@@ -227,14 +227,10 @@ const AdminLogin = () => {
 };
 
 
-const LoginContainer = ({isAdmin}) => {
+const LoginContainer = ({ isAdmin }) => {
   const [isDone, setIsDone] = useState(false);
-<<<<<<< HEAD
-  return <>{isAdmin ? <AdminLogin/> : (!isDone ? <LoginA setIsDone={setIsDone} /> : <LoginB />)}</>;
-=======
   const [aadhaar, setAadhaar] = useState();
-  return <>{!isDone && !aadhaar ? <LoginA setIsDone={setIsDone} setAadhaar={setAadhaar} /> : <LoginB aadhaar={aadhaar} />}</>;
->>>>>>> 2cad2b925aa83481d9de02fda0890333adfed9ba
+  return <>{isAdmin ? <AdminLogin /> : (!isDone && !aadhaar ? <LoginA setIsDone={setIsDone} setAadhaar={setAadhaar} /> : <LoginB aadhaar={aadhaar} />)}</>;
 };
 
 export default LoginContainer;
