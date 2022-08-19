@@ -9,6 +9,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Nunito", sans-serif;
+  box-sizing: border-box;
   /* font-family: "Ubuntu", sans-serif; */
 }
 
@@ -177,6 +178,20 @@ a {
 }
 .dash-right h1{
   font-weight: 900;
+}
+.Admindash-top{
+  /* border: 2px solid red; */
+  margin: 20px;
+}
+.Admindash-top h2{
+  
+    font-weight: 900;
+    letter-spacing: 10px;
+}
+.Admindash-top h6{
+  font-weight: 700;
+    color: brown;
+    letter-spacing: 10px;
 }
 /* NAVIGATION */
 .title h1 {
@@ -357,3 +372,11 @@ a {
   align-items: center;
 }
 
+
+/* TABLE */
+
+.tableContainer{
+  margin: 100px;
+  /* border: 2px solid red; */
+  width: 90vw;
+}

@@ -106,9 +106,59 @@ const LoginB = () => {
   );
 };
 
-const LoginContainer = () => {
+const AdminLogin = () => {
+  const username = useRef();
+  const password = useRef();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      console.log(entry);
+  };
+
+  return (
+    <>
+      <div className="background"></div>
+      <div className="texture">
+        <Container className="container-top">
+          <Row className="login-top">
+            <Col xs={12} md={6} className="login-top-right shadow">
+              <h6>Ministry of Ports, Shipping & Waterways</h6>
+              <h2>ADMIN PANEL</h2>
+              <form>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  className="input"
+                  ref={username}
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="input"
+                  ref={password}
+                />
+                <Link href="/adminDashboard">
+                <button
+                  className="btn btn-login btn-custom"
+                  // onClick={(e) => handleSubmit(e)}
+                >
+                  Login
+                </button>
+                </Link>
+              </form>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
+  );
+};
+
+
+const LoginContainer = ({isAdmin}) => {
   const [isDone, setIsDone] = useState(false);
-  return <>{!isDone ? <LoginA setIsDone={setIsDone} /> : <LoginB />}</>;
+  return <>{isAdmin ? <AdminLogin/> : (!isDone ? <LoginA setIsDone={setIsDone} /> : <LoginB />)}</>;
 };
 
 export default LoginContainer;
