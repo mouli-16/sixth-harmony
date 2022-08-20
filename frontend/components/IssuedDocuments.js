@@ -35,12 +35,16 @@ The structure is:- [
         <p className="text-gray-900 mt-2">
             All your documents will appear here.
         </p>
-        <div className="pr-5">
-            {list && list.map((elem)=>
-            <div className="h-20 mt-3 shadow-lg rounded-lg">{elem.name}</div>
+<div className="pr-5">
+{list && list.map((elem)=>
+            <>
+            <div className=" flex-shrink-0 w-5/6 h-32 m-3 shadow-lg rounded-lg">{elem.name}</div>
+            <div className=" flex-shrink-0 w-5/6 h-32 m-3 shadow-lg rounded-lg"></div>
+            <div className=" flex-shrink-0 w-5/6 h-32 m-3 shadow-lg rounded-lg"></div>
+            <div className=" flex-shrink-0 w-5/6 h-32 m-3 shadow-lg rounded-lg"></div>
+            </>
             )}
-        </div> 
-        
-    </div>
+  </div>
+  </div>
   );
 }
