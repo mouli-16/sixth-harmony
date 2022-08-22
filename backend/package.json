@@ -9,7 +9,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon .",
-    "start": "node ."
+    "start": "node .",
+    "pdf": "nodemon utils/pdf"
   },
   "dependencies": {
     "aws-sdk": "^2.1181.0",
@@ -22,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.7",
     "node-cron": "^3.0.2",
+    "pdfkit": "^0.13.0",
     "twilio": "^3.79.0",
     "web3.storage": "^4.3.0"
   },
