@@ -1,21 +1,13 @@
-import React from "react";
 import Link from "next/link";
+import Router from "next/router"
+import React from "react";
+import { useRef, useState } from "react";
 import Box from "@mui/material/Box";
-import axios from "axios";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import { useRef } from "react";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
-
-import OTPInput from "./OTPInput";
 import { Container, Row, Col } from "react-bootstrap";
-
-import { Component } from 'react';
 import Otp from 'react-otp-input';
-import { width } from "@mui/system";
-
+import axios from "axios";
+import ErrComponent from "./errComponent";
 
 const LoginA = ({ setIsDone, setAadhaar }) => {
   const name = useRef();
@@ -38,7 +30,6 @@ const LoginA = ({ setIsDone, setAadhaar }) => {
         setAadhaar(aadhar.current.value);
         setIsDone(true);
       }
-
     } catch (e) {
       console.log(e)
     }
@@ -89,6 +80,7 @@ const LoginB = ({ aadhaar }) => {
   console.log(aadhaar, 'AAA');
 
   const [otp, setOtp] = useState('');
+  const [err, setErr] = useState(false);
 
   // state = { otp: '' };
 
@@ -109,9 +101,11 @@ const LoginB = ({ aadhaar }) => {
       let res = await axios.post('http://localhost:5000/auth/verify', entry,{ withCredentials:true })
       if (res.status === 200) {
         console.log('Verified');
-      }
+        Router.push('/dashboard')
+      } else setErr(true)
     } catch (e) {
-      console.log(e)
+      if(e.response.status == 401) setErr(true)
+      console.log(e, 'nnnn')
     }
 
   };
@@ -150,7 +144,7 @@ const LoginB = ({ aadhaar }) => {
                     { fontSize: 25, }
                   }
                 />
-
+                {err && <ErrComponent msg={"Incorrect OTP"}/>}
                 <Link href="/dashboard">
                   <button
                     className="btn btn-login btn-custom btn-verify w-2/3"

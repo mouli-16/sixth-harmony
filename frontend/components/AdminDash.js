@@ -14,6 +14,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import { useState,useEffect } from 'react';
+import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,6 +58,51 @@ export default function AdminDash() {
   const handleClick = () => {
     // setValue(newValue);
   };
+
+  // PENDING
+  const [pending,setPending] = useState([]);
+
+  const getPending = async ()=>{
+      const res = await axios.get('http://localhost:5000/application/getpending',{ withCredentials:true })
+      setPending(res.data)
+      console.log(res.data)
+   }
+
+   // IN-PROCESS
+  const [inprocess,setInProcess] = useState([]);
+
+  const getInProcess = async ()=>{
+      const res = await axios.get('http://localhost:5000/application/getinprocess',{ withCredentials:true })
+      setInProcess(res.data)
+      console.log(res.data)
+   }
+
+    // APPROVED
+  const [approved,setApproved] = useState([]);
+
+  const getApproved = async ()=>{
+      const res = await axios.get('http://localhost:5000/application/getapproved',{ withCredentials:true })
+      setApproved(res.data)
+      console.log(res.data)
+   }
+
+     // REJECTED
+  const [rejected,setRejected] = useState([]);
+
+  const getRejected = async ()=>{
+      const res = await axios.get('http://localhost:5000/application/getrejected',{ withCredentials:true })
+      setApproved(res.data)
+      console.log(res.data)
+   }
+
+   useEffect(()=>{
+    getPending();
+    getInProcess();
+    getApproved();
+    getRejected();
+
+},[])
+
   return (
     <>
       <div className="backgroundDash"></div>
@@ -94,16 +141,16 @@ export default function AdminDash() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {rows.map((row) => (
-                          <StyledTableRow key={row.name}>
+                        {pending.map((row) => (
+                          <StyledTableRow key={row.user.name}>
                             <StyledTableCell component="th" scope="row">
-                              {row.name}
+                              {row.user.name}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              {row.port}
+                              {"Haldia"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              {row.state}
+                              {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
                               <Button variant="contained" onClick={handleClick}>Reviewed</Button>
@@ -114,9 +161,75 @@ export default function AdminDash() {
                     </Table>
                   </TableContainer>
                 </TabPanel>
-                <TabPanel value="2">Item Two</TabPanel>
-                <TabPanel value="3">Item Three</TabPanel>
-                <TabPanel value="4">Item Three</TabPanel>
+                <TabPanel value="2">
+
+                </TabPanel>
+                <TabPanel value="3">
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                      <TableHead>
+                        <TableRow>
+                          <StyledTableCell>Name</StyledTableCell>
+                          <StyledTableCell align="right">Port</StyledTableCell>
+                          <StyledTableCell align="right">State</StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {approved.map((row) => (
+                          <StyledTableRow key={row.user.name}>
+                            <StyledTableCell component="th" scope="row">
+                              {row.user.name}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"Haldia"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"West Bengal"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              <Button variant="contained" onClick={handleClick}>Reviewed</Button>
+                            </StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </TabPanel>
+                <TabPanel value="4">
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                      <TableHead>
+                        <TableRow>
+                          <StyledTableCell>Name</StyledTableCell>
+                          <StyledTableCell align="right">Port</StyledTableCell>
+                          <StyledTableCell align="right">State</StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {rejected.map((row) => (
+                          <StyledTableRow key={row.user.name}>
+                            <StyledTableCell component="th" scope="row">
+                              {row.user.name}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"Haldia"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"West Bengal"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              <Button variant="contained" onClick={handleClick}>Reviewed</Button>
+                            </StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </TabPanel>
               </TabContext>
             </Box>
           </Row>

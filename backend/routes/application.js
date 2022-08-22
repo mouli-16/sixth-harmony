@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const { Application } = require('../models')
+const {User} = require('../models')
 const { authenticate } = require('../middlewares')
 
 const routes = Router()
@@ -35,7 +36,8 @@ routes
     try{
         var response = await Application.find(
           {status:"pending"}
-        )
+        ).populate('user')
+        
          res.status(200).send(response)
 
     }catch(err){
@@ -50,7 +52,7 @@ routes
     try{
         var response = await Application.find(
           {status:"approved"}
-        )
+        ).populate('user')
          res.status(200).send(response)
 
     }catch(err){
@@ -65,7 +67,7 @@ routes
     try{
         var response = await Application.find(
           {status:"inprocess"}
-        )
+        ).populate('user')
          res.status(200).send(response)
 
     }catch(err){
@@ -80,7 +82,7 @@ routes
     try{
         var response = await Application.find(
           {status:"rejected"}
-        )
+        ).populate('user')
          res.status(200).send(response)
 
     }catch(err){

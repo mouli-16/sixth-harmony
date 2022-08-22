@@ -37,7 +37,9 @@ The structure is:- [
         </p>
         <div className="pr-5">
             {list && list.map((elem)=>
-            <div className="h-20 mt-3 shadow-lg rounded-lg">{elem.name}</div>
+            <div className="h-20 mt-3 shadow-lg rounded-lg">
+              <a href = {`http://dweb.link/ipfs/${elem.cid}${elem.name}`} className="h-20 mt-3 shadow-lg rounded-lg">{elem.name}</a>
+              </div>
             )}
         </div> 
         
