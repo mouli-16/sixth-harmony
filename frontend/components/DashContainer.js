@@ -4,6 +4,8 @@ import IssuedDocuments from "./IssuedDocuments";
 import Profile from "./Profile";
 import Home from "./Home";
 import Drive from "./Drive";
+import Registration from "./Registration";
+
 function DashContainer() {
   const [home,setHome] = React.useState(true);
   const [issued,setIssued] = React.useState(false);
@@ -22,11 +24,12 @@ function DashContainer() {
               <Navigation setIssued = {setIssued} setHome={setHome} setProfile={setProfile} setRegistration={setRegistration} setDrive={setDrive}/>
           </div>
           {/* right side */}
-          <div className="h-screen position-fixed -z-10 w-[calc(100%-16.66%)] ml-80 md:ml-64 xl:ml-92">
+          <div className="h-screen position-fixed -z-10 w-[calc(100%-16.66%)] ml-80 md:ml-80 xl:ml-92">
                 { home ? <Home/> : <></>}
                 { issued ? <IssuedDocuments/> : <></>}
                 { profile ? <Profile/> : <></>}
                 { drive ? <Drive/> : <></>}
+                { registration ? <Registration/> : <></>}
           </div>
               
       </div>
