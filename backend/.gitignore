@@ -3,3 +3,6 @@ aadhaarPrivate.json
 
 # dB docker volume
 db-data
+
+# Dummy Output PDF
+output.pdf
