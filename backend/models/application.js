@@ -22,6 +22,18 @@ const applicationSchema = new Schema({
   status: {
     type: String,
     default: "pending"
+  },
+  city:{
+    type:String
+  },
+  state:{
+    type:String
+  },
+  zip:{
+    type:String
+  },
+  pan:{
+    type:String
   }
 })
 

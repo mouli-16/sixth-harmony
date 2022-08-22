@@ -10,7 +10,7 @@ routes
 // post an application from user side
   .post('/:type', authenticate, async (req, res) => {
     const {
-      dob, address
+      dob, address, city, state,zip,pan
     } = req.body
     const {
       type
@@ -20,7 +20,11 @@ routes
         user: res.locals.sub,
         dob: new Date(dob),
         address,
-        type
+        type,
+        city,
+        state,
+        zip,
+        pan
       })
        
     } catch (error) {
