@@ -14,8 +14,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from "react";
 import axios from "axios";
+import AdminModal from "./AdminModal";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -60,49 +61,69 @@ export default function AdminDash() {
   };
 
   // PENDING
-  const [pending,setPending] = useState([]);
+  const [pending, setPending] = useState([]);
 
-  const getPending = async ()=>{
-      const res = await axios.get('http://localhost:5000/application/getpending',{ withCredentials:true })
-      setPending(res.data)
-      console.log(res.data)
-   }
+  const getPending = async () => {
+    const res = await axios.get(
+      "http://localhost:5000/application/getpending",
+      { withCredentials: true }
+    );
+    setPending(res.data);
+    console.log(res.data);
+  };
 
-   // IN-PROCESS
-  const [inprocess,setInProcess] = useState([]);
+  // IN-PROCESS
+  const [inprocess, setInProcess] = useState([]);
 
-  const getInProcess = async ()=>{
-      const res = await axios.get('http://localhost:5000/application/getinprocess',{ withCredentials:true })
-      setInProcess(res.data)
-      console.log(res.data)
-   }
+  const getInProcess = async () => {
+    const res = await axios.get(
+      "http://localhost:5000/application/getinprocess",
+      { withCredentials: true }
+    );
+    setInProcess(res.data);
+    console.log(res.data);
+  };
 
-    // APPROVED
-  const [approved,setApproved] = useState([]);
+  // APPROVED
+  const [approved, setApproved] = useState([]);
 
-  const getApproved = async ()=>{
-      const res = await axios.get('http://localhost:5000/application/getapproved',{ withCredentials:true })
-      setApproved(res.data)
-      console.log(res.data)
-   }
+  const getApproved = async () => {
+    const res = await axios.get(
+      "http://localhost:5000/application/getapproved",
+      { withCredentials: true }
+    );
+    setApproved(res.data);
+    console.log(res.data);
+  };
 
-     // REJECTED
-  const [rejected,setRejected] = useState([]);
+  // REJECTED
+  const [rejected, setRejected] = useState([]);
 
-  const getRejected = async ()=>{
-      const res = await axios.get('http://localhost:5000/application/getrejected',{ withCredentials:true })
-      setApproved(res.data)
-      console.log(res.data)
-   }
+  const getRejected = async () => {
+    const res = await axios.get(
+      "http://localhost:5000/application/getrejected",
+      { withCredentials: true }
+    );
+    setApproved(res.data);
+    console.log(res.data);
+  };
 
-   useEffect(()=>{
+  useEffect(() => {
     getPending();
     getInProcess();
     getApproved();
     getRejected();
+  }, []);
 
-},[])
-
+  const [open, setOpen] = React.useState(false);
+  const handleReview = () => {
+    setOpen(true);
+  }
+  const handleReject = async() => {
+    const res = await axios.put(
+      "http://localhost:5000/application/reject",
+    );
+  }
   return (
     <>
       <div className="backgroundDash"></div>
@@ -153,7 +174,14 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={handleClick}>Reviewed</Button>
+                              <Button variant="contained" onClick={handleReview}>
+                                Review
+                              </Button>
+                              <AdminModal
+                                open={open}
+                                setOpen={setOpen}
+                                row={row}
+                              />
                             </StyledTableCell>
                           </StyledTableRow>
                         ))}
@@ -162,10 +190,39 @@ export default function AdminDash() {
                   </TableContainer>
                 </TabPanel>
                 <TabPanel value="2">
-
+                  <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                      <TableHead>
+                        <TableRow>
+                          <StyledTableCell>Name</StyledTableCell>
+                          <StyledTableCell align="right">Port</StyledTableCell>
+                          <StyledTableCell align="right">State</StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                          <StyledTableCell align="right"></StyledTableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {inprocess.map((row) => (
+                          <StyledTableRow key={row.user.name}>
+                            <StyledTableCell component="th" scope="row">
+                              {row.user.name}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"Haldia"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                              {"West Bengal"}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">
+                            </StyledTableCell>
+                          </StyledTableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </TabPanel>
                 <TabPanel value="3">
-                <TableContainer component={Paper}>
+                  <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                       <TableHead>
                         <TableRow>
@@ -189,7 +246,9 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={handleClick}>Reviewed</Button>
+                              <Button variant="contained" onClick={handleReject}>
+                                Reject
+                              </Button>
                             </StyledTableCell>
                           </StyledTableRow>
                         ))}
@@ -198,7 +257,7 @@ export default function AdminDash() {
                   </TableContainer>
                 </TabPanel>
                 <TabPanel value="4">
-                <TableContainer component={Paper}>
+                  <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                       <TableHead>
                         <TableRow>
@@ -222,7 +281,6 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={handleClick}>Reviewed</Button>
                             </StyledTableCell>
                           </StyledTableRow>
                         ))}
