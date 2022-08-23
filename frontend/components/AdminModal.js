@@ -19,8 +19,9 @@ export default function ClientDialog(props) {
 
   const reviewed = async () => {
     const res = await axios.put(
-      "http://localhost:5000/application/approve",props.row._id,{ withCredentials: true }
+      "http://localhost:5000/application/approve",{userId:props.row.user},{ withCredentials: true }
     );
+    console.log(res)
     props.setOpen(false);
   };
 
