@@ -12,10 +12,78 @@ export default function Home(){
             Get all your documents from here!
         </p>
         <div className="pr-5 flex mt-1 overflow-x-scroll">
-            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg "></div>
-            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg"></div>
-            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg"></div>
-            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg"></div>
+            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg flex ">
+            <Card
+            style={{
+              width: "5rem",
+              borderRadius: "10px",
+              margin: "25px",
+              flexShrink: 0,
+            }}
+          >
+            <Card.Img variant="top" src="assets/ministryports.jpeg" />
+          </Card>
+          <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
+            Driver's Licence
+            <div className="font-sans font-semibold text-lg text-stone-400 ">
+              XXXXXXXXXX
+            </div>
+          </div>
+            </div>
+            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg flex ">
+            <Card
+            style={{
+              width: "5rem",
+              borderRadius: "10px",
+              margin: "25px",
+              flexShrink: 0,
+            }}
+          >
+            <Card.Img variant="top" src="assets/ministryports.jpeg" />
+          </Card>
+          <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
+            Driver's Licence
+            <div className="font-sans font-semibold text-lg text-stone-400 ">
+              XXXXXXXXXX
+            </div>
+          </div>
+            </div>
+            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg flex ">
+            <Card
+            style={{
+              width: "5rem",
+              borderRadius: "10px",
+              margin: "25px",
+              flexShrink: 0,
+            }}
+          >
+            <Card.Img variant="top" src="assets/ministryports.jpeg" />
+          </Card>
+          <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
+            Driver's Licence
+            <div className="font-sans font-semibold text-lg text-stone-400 ">
+              XXXXXXXXXX
+            </div>
+          </div>
+            </div>
+            <div className=" flex-shrink-0 w-3/12 h-32 m-3 shadow-lg rounded-lg flex ">
+            <Card
+            style={{
+              width: "5rem",
+              borderRadius: "10px",
+              margin: "25px",
+              flexShrink: 0,
+            }}
+          >
+            <Card.Img variant="top" src="assets/ministryports.jpeg" />
+          </Card>
+          <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
+            Driver's Licence
+            <div className="font-sans font-semibold text-lg text-stone-400 ">
+              XXXXXXXXXX
+            </div>
+          </div>
+            </div>
         </div> 
    </div>
   <div className="m-2">
