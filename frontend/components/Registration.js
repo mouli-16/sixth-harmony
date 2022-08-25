@@ -4,8 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
+import Box from "@mui/material/Box";
 import axios from 'axios';
-
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
 function Registration() {
 
   const [validated, setValidated] = useState(false);
@@ -55,7 +58,7 @@ function Registration() {
   const [address, setAddress] = useState();
 
   return (
- 
+
     <div className="pr-5 ml-2">
       <div className="shadow-lg rounded-lg">
         <div className="flex  mt-4 ">
@@ -64,7 +67,21 @@ function Registration() {
         </div>
         <div className="flex p-5">
          <div className="w-full ml-10 mt-10">
-
+         {/* <Box sx={{ width: "100%", typography: "body1" }}>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <TabList
+                    onChange={handleChange}
+                    aria-label="lab API tabs example"
+                  >
+                    <Tab label="Pending" value="1" />
+                    <Tab label="In-Process" value="2" />
+                    <Tab label="Approved" value="3" />
+                    <Tab label="Rejected" value="4" />
+                  </TabList>
+                </Box>
+                </TabContext>
+                </Box> */}
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
        <Row className="mb-3 d-flex">
         <Form.Group as={Col} md="5">
@@ -175,7 +192,8 @@ function Registration() {
       </div>
     </div>
     </div>
-  );
+  
+    );
 }
 
 export default Registration;

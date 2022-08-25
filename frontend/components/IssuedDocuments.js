@@ -84,7 +84,7 @@ The structure is:- [
           <div className="font-sans font-semibold text-xl text-blue-900 object-left">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400">
-              XXXXXXXXXX
+            674769748787
             </div>
           </div>
           <div className="font-sans font-semibold text-lg text-blue-900 object-left">
@@ -136,7 +136,7 @@ The structure is:- [
           <div className="font-sans font-semibold text-xl text-blue-900 object-left">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400">
-              XXXXXXXXXX
+              64687368776
             </div>
           </div>
           <div className="font-sans font-semibold text-lg text-blue-900 object-left">
@@ -188,7 +188,7 @@ The structure is:- [
           <div className="font-sans font-semibold text-xl text-blue-900 object-left">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400">
-              XXXXXXXXXX
+              56754648667
             </div>
           </div>
           <div className="font-sans font-semibold text-lg text-blue-900 object-left">

@@ -26,7 +26,7 @@ export default function Home(){
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400 ">
-              XXXXXXXXXX
+              879896754980
             </div>
           </div>
             </div>
@@ -44,7 +44,7 @@ export default function Home(){
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400 ">
-              XXXXXXXXXX
+             476989048098
             </div>
           </div>
             </div>
@@ -62,7 +62,7 @@ export default function Home(){
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400 ">
-              XXXXXXXXXX
+              678947479874
             </div>
           </div>
             </div>
@@ -80,7 +80,7 @@ export default function Home(){
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
             Driver's Licence
             <div className="font-sans font-semibold text-lg text-stone-400 ">
-              XXXXXXXXXX
+          468764767782
             </div>
           </div>
             </div>
