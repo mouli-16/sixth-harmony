@@ -116,8 +116,20 @@ export default function AdminDash() {
   }, []);
 
   const [open, setOpen] = React.useState(false);
-  const handleReview = () => {
+  const handleReview = async(row) => {
     setOpen(true);
+    const res = await axios.put(
+      "http://localhost:5000/application/approve",{userId:row.user},{ withCredentials: true }
+    );
+    console.log(res)
+  }
+  const handleNext = (id) => {
+    const _id = (ele) => ele._id == id
+    const idx = pending.findIndex(_id);
+    console.log(idx);
+  }
+  const handlePrev = (id) => {
+    console.log(id);
   }
   const handleReject = async() => {
     const res = await axios.put(
@@ -174,13 +186,15 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={handleReview}>
+                              <Button variant="contained" onClick={(row) => handleReview(row)}>
                                 Review
                               </Button>
                               <AdminModal
                                 open={open}
                                 setOpen={setOpen}
                                 row={row}
+                                handleNext={handleNext}
+                                handlePrev={handlePrev}
                               />
                             </StyledTableCell>
                           </StyledTableRow>

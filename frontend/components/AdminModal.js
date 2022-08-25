@@ -17,14 +17,6 @@ export default function ClientDialog(props) {
     props.setOpen(false);
   };
 
-  const reviewed = async () => {
-    const res = await axios.put(
-      "http://localhost:5000/application/approve",{userId:props.row.user},{ withCredentials: true }
-    );
-    console.log(res)
-    props.setOpen(false);
-  };
-
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
@@ -89,8 +81,11 @@ export default function ClientDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={reviewed}>
-            Reviewed
+          <Button variant="contained" onClick={() =>props.handlePrev(props.row._id)}>
+            Prev
+          </Button>
+          <Button variant="contained" onClick={() => props.handleNext(props.row._id)}>
+            Next
           </Button>
         </DialogActions>
       </Dialog>
