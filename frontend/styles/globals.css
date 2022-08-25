@@ -395,3 +395,269 @@ a {
  
 }
 
+CSS Pretty Print
+ 
+body {
+	 position: absolute;
+	 height: 100%;
+	 width: 100%;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 background: #265cb3;
+}
+ body:before {
+	 content: '
+	'
+	;
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 background: radial-gradient(150% 150% at 0% 20%, #d8dee8 20%, #788daf);
+}
+ .buttonF {
+	 appearance: none;
+	 border: none;
+	 outline: none;
+	 padding: 1px;
+	 /* border: 1px; */
+	 cursor: pointer;
+	 display:flex;
+	 align-items: center;
+	 justify-content: center;
+	 position: absolute;
+	 font-size: 30vmin;
+	 width: 15%;
+	 height: 15%;
+   margin-left: 40%;
+   margin-top: 20%;
+	 opacity: 0;
+	 animation: buttonIn 2s cubic-bezier(0.33, 0.45, 0.3, 1) forwards 2s;
+	 background: none;
+ 
+	 /* border-radius: 50%; */
+}
+ @keyframes buttonIn {
+	 from {
+		 opacity: 0;
+		 transform: scale3d(1.1, 1.15, 1);
+	}
+	 to {
+		 opacity: 1;
+		 transform: none;
+	}
+}
+ .buttonF:before, .button:after {
+	 content: '
+	'
+	;
+	 /* border-radius: inherit; */
+}
+ .buttonF:before {
+	 filter: blur(0.025em);
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 background: radial-gradient(160% 160% at 57.5% 60%, rgba(235, 238, 243, 0) 30%, #ebeef3 45%), radial-gradient(180% 200% at 40% 17.5%, rgba(152, 168, 194, 0) 35%, #98a8c2 50%), radial-gradient(120% 120% at 45% 45%, rgba(184, 195, 213, 0.56) 42%, rgba(152, 168, 194, .75) 50%);
+	 background-color: #1b5bd3;
+	 box-shadow: inset -0.05em -0.05em 0.025em -0.025em #a8b5cc, 0.115em 0.15em 0.1em -0.033em #98a9c2, 0.15em 0.2em 0.25em #a8b7cc92, 0.5em 0.33em 0.5em 0.1em #a8b5cc, -0.1em -0.1em 0.05em -0.075em #dee3ec, -0.2em -0.2em 0.33em -0.075em #dadfe9;
+}
+ .buttonF:after {
+	 position: absolute;
+	 top: 0.025em;
+	 right: 0.025em;
+	 bottom: 0.025em;
+	 left: 0.025em;
+	 background: radial-gradient(150% 150% at 75% 75%, rgba(120, 141, 175, 0) 30%, #788daf), radial-gradient(150% 150% at -10% -10%, rgba(226, 230, 238, 0) 50%, #e2e6ee);
+	 background-color: #b8c3d5;
+	 transition: 0.75s cubic-bezier(0.33, 0.45, 0.3, 1);
+	 transition-delay: 0.25s;
+	 opacity: 0;
+	 filter: blur(0.03em);
+	 transform: scale3d(0.925, 0.94, 1);
+}
+ .print {
+	 position: relative;
+	 width: 40%;
+	 height: 0;
+	 padding-bottom: 44.488%;
+	 display: inline-block;
+	 z-index: 1;
+	 transform: scale3d(1.05, 1.05, 1);
+	 backface-visiblity: hidden;
+	 color: rgba(51, 170, 255, .5);
+}
+ .print svg {
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+}
+ .print path {
+	 stroke-width: 4;
+	 fill: none;
+	 stroke-linecap: round;
+	 stroke-dasharray: 1;
+	 transition: 2s cubic-bezier(0.33, 0.45, 0.3, 1);
+	 will-change: stroke-dashoffset, stroke, color, opacity;
+}
+ .print--under {
+	 margin-right: -40%;
+	 mix-blend-mode: lighten;
+	 filter: drop-shadow(0 0 0.033em currentColor);
+	 stroke-dashoffset: 0.5;
+	 transition: 2s cubic-bezier(0.33, 0.45, 0.3, 1);
+	 animation: printPulse 2s linear infinite 6.25s;
+}
+ @keyframes printPulse {
+	 0% {
+		 opacity: 1;
+	}
+	 50% {
+		 opacity: 0.33;
+	}
+	 100% {
+		 opacity: 1;
+	}
+}
+ .print--under path {
+	 opacity: 0;
+	 animation: printIn 2s cubic-bezier(0.33, 0.45, 0.3, 1) forwards 3.2s;
+}
+ @keyframes printIn {
+	 from {
+		 opacity: 0;
+		 stroke-dashoffset: 0.5;
+	}
+	 to {
+		 opacity: 1;
+		 stroke-dashoffset: 0;
+	}
+}
+ .print--under path:nth-of-type(1) {
+	 stroke: #83afe3;
+}
+ .print--under path:nth-of-type(2) {
+	 stroke: #83afe3;
+}
+ .print--under path:nth-of-type(3) {
+	 stroke: #a6d4ff;
+}
+ .print--under path:nth-of-type(4) {
+	 stroke: #a6d7ff;
+}
+ .print--under path:nth-of-type(5) {
+	 stroke: #a6daff;
+}
+ .print--over {
+	 filter: drop-shadow(-0.0075em -0.0075em 0.005em rgb(228, 228, 248)) drop-shadow(0.0075em 0.0075em 0.005em rgba(255, 255, 255, .25)) drop-shadow(0 0 0.04em currentColor);
+	 opacity: 0;
+	 transition: transform 2s cubic-bezier(0.33, 0.45, 0.3, 1), color 0s 0.4s, opacity 0.5s cubic-bezier(0.33, 0.45, 0.3, 1);
+}
+ .print--over:after {
+	 content: '
+	'
+	;
+	 position: absolute;
+	 top: -40%;
+	 right: -60%;
+	 bottom: -40%;
+	 left: -60%;
+	 border-radius: 50%;
+	 opacity: 0;
+	 background: radial-gradient(32.5% 32.5% at 42.5% 42.5%, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0));
+	 mix-blend-mode: color-dodge;
+	 transition: opacity 0.3s cubic-bezier(0.33, 0.45, 0.3, 1);
+	 animation: glowPulse 3s linear infinite, glowTwist 3s linear infinite;
+}
+ @keyframes glowPulse {
+	 0% {
+		 transform: scale3d(0.9, 0.9, 1);
+	}
+	 50% {
+		 transform: scale3d(1, 1, 1);
+	}
+	 100% {
+		 transform: scale3d(0.9, 0.9, 1);
+	}
+}
+ @keyframes glowTwist {
+	 0% {
+		 rotate: 0deg;
+	}
+	 50% {
+		 rotate: 180deg;
+	}
+	 100% {
+		 rotate: 360deg;
+	}
+}
+ .print--over path {
+	 opacity: 0;
+	 stroke-dashoffset: 1;
+	 transition: stroke 0.5s cubic-bezier(0.33, 0.45, 0.3, 1), opacity 0s 0.5s, stroke-dashoffset 0s 0.5s;
+}
+ .print--over path:nth-of-type(1) {
+	 stroke: #338fff;
+}
+ .print--over path:nth-of-type(2) {
+	 stroke: #3396ff;
+}
+ .print--over path:nth-of-type(3) {
+	 stroke: #339cff;
+}
+ .print--over path:nth-of-type(4) {
+	 stroke: #33a3ff;
+}
+ .print--over path:nth-of-type(5) {
+	 stroke: #3af;
+}
+ .buttonF:hover.test, .button.test.test {
+	 animation: none;
+	 opacity: 1;
+	 transform: none;
+	 font-size: 60vmin;
+}
+ .buttonF:hover:after, .button.test:after {
+	 opacity: 1;
+	 transform: none;
+	 transition-delay: 0s;
+}
+ .buttonF:hover .print, .button.test .print {
+	 transform: scale3d(1, 1, 1) translateZ(0);
+}
+ .buttonF:hover .print--over, .button.test .print--over {
+	 color: rgba(111, 0, 255, .66);
+	 opacity: 0.66;
+	 transition: 1.5s cubic-bezier(0.33, 0.45, 0.3, 1) 4.5s, opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1), transform 2s cubic-bezier(0.33, 0.45, 0.3, 1);
+}
+ .buttonF:hover .print--over:after, .button.test .print--over:after {
+	 transition: opacity 2s cubic-bezier(0.33, 0.45, 0.3, 1) 5.25s;
+}
+ .buttonF:hover .print--over path, .button.test .print--over path {
+	 opacity: 1;
+	 stroke-dashoffset: 0;
+}
+ .buttonF:hover .print--over path:nth-of-type(1), .button.test .print--over path:nth-of-type(1) {
+	 stroke: #2a00ff;
+	 transition: opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1) 0.35s, stroke-dashoffset 4.2s cubic-bezier(0.33, 0.45, 0.3, 1) 0.35s, stroke 1.2s cubic-bezier(0.33, 0.45, 0.3, 1) 4.65s, color 1.2s cubic-bezier(0.33, 0.45, 0.3, 1) 4.65s;
+}
+ .buttonF:hover .print--over path:nth-of-type(2), .button.test .print--over path:nth-of-type(2) {
+	 stroke: #3c00ff;
+	 transition: opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1) 0.45s, stroke-dashoffset 4.4s cubic-bezier(0.33, 0.45, 0.3, 1) 0.45s, stroke 1.4s cubic-bezier(0.33, 0.45, 0.3, 1) 4.55s, color 1.4s cubic-bezier(0.33, 0.45, 0.3, 1) 4.55s;
+}
+ .buttonF:hover .print--over path:nth-of-type(3), .button.test .print--over path:nth-of-type(3) {
+	 stroke: #4d00ff;
+	 transition: opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1) 0.55s, stroke-dashoffset 4.6s cubic-bezier(0.33, 0.45, 0.3, 1) 0.55s, stroke 1.6s cubic-bezier(0.33, 0.45, 0.3, 1) 4.45s, color 1.6s cubic-bezier(0.33, 0.45, 0.3, 1) 4.45s;
+}
+ .buttonF:hover .print--over path:nth-of-type(4), .button.test .print--over path:nth-of-type(4) {
+	 stroke: #5e00ff;
+	 transition: opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1) 0.65s, stroke-dashoffset 4.8s cubic-bezier(0.33, 0.45, 0.3, 1) 0.65s, stroke 1.8s cubic-bezier(0.33, 0.45, 0.3, 1) 4.35s, color 1.8s cubic-bezier(0.33, 0.45, 0.3, 1) 4.35s;
+}
+ .buttonF:hover .print--over path:nth-of-type(5), .button.test .print--over path:nth-of-type(5) {
+	 stroke: #6f00ff;
+	 transition: opacity 0.25s cubic-bezier(0.33, 0.45, 0.3, 1) 0.75s, stroke-dashoffset 5s cubic-bezier(0.33, 0.45, 0.3, 1) 0.75s, stroke 2s cubic-bezier(0.33, 0.45, 0.3, 1) 4.25s, color 2s cubic-bezier(0.33, 0.45, 0.3, 1) 4.25s;
+}

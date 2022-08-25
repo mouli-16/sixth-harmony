@@ -50,7 +50,8 @@ function PdfViewer(props) {
     ]}
 /> */}
         <object
-data="https://bafybeieh6g4vz4x2e67saxsd6ggyo3j5bhwjtsj6k656mj4uv5iy5epnli.ipfs.dweb.link/output.pdf"
+// data="https://bafybeieh6g4vz4x2e67saxsd6ggyo3j5bhwjtsj6k656mj4uv5iy5epnli.ipfs.dweb.link/output.pdf"
+data="/$output.pdf"
 type="application/pdf"
           width="100%"
           height="100%"
