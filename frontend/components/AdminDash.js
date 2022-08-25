@@ -14,9 +14,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import axios from "axios";
 import AdminModal from "./AdminModal";
+import Test from "./QrScanner";
+import QrReader from 'react-qr-scanner'
+
+const qr = useRef<QrReader>(null)
+
+const handleScan = () =>{
+  // qr?.current?.openImageDialog()
+  console.log("j");
+}
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,7 +39,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
+    // backgroundColor: theme.palette.action.hover,
   },
   // hide last border
   "&:last-child td, &:last-child th": {
@@ -115,52 +124,64 @@ export default function AdminDash() {
     getRejected();
   }, []);
 
-
   const [open, setOpen] = React.useState({});
   const handleNext = (id) => {
     let idx = pending.findIndex((ele) => ele._id == id);
     console.log(idx);
-    setOpen({[pending[idx]._id] : false});
+    setOpen({ [pending[idx]._id]: false });
     idx++;
     let sz = pending.length;
-    if(idx >= sz) idx = 0;
-     setOpen({[pending[idx]._id] : true});
-  }
+    if (idx >= sz) idx = 0;
+    setOpen({ [pending[idx]._id]: true });
+  };
   const handlePrev = (id) => {
     let idx = pending.findIndex((ele) => ele._id == id);
     console.log(idx);
-    setOpen({[pending[idx]._id] : false});
+    setOpen({ [pending[idx]._id]: false });
     idx--;
-    if(idx <0) idx = 0;
-     setOpen({[pending[idx]._id] : true});
-  }
-  
-  const handleReview = async(_id) => {
-    setOpen({[_id] : true});
+    if (idx < 0) idx = 0;
+    setOpen({ [pending[idx]._id]: true });
+  };
+
+  const handleReview = async (_id) => {
+    setOpen({ [_id]: true });
     const res = await axios.put(
-      "http://localhost:5000/application/approve",{id:_id},{ withCredentials: true }
+      "http://localhost:5000/application/approve",
+      { id: _id },
+      { withCredentials: true }
     );
-    console.log(res)
-  }
-  const handleReject = async(props) => {
+    console.log(res);
+  };
+  const handleReject = async (props) => {
     // console.log(props)
-    const body = {id:props};
+    const body = { id: props };
     // console.log(body);
     const res = await axios.put(
-      "http://localhost:5000/application/reject",body,{ withCredentials: true }
+      "http://localhost:5000/application/reject",
+      body,
+      { withCredentials: true }
     );
-    if(res.status==200)
-    window.location.reload()
-  }
+    if (res.status == 200) window.location.reload();
+  };
   return (
     <>
       <div className="backgroundDash"></div>
       <div className="textureDash">
         <Container className="container-top">
           <Row className="Admindash-top">
-            <Col xs={0} md={6}>
+            <Col xs={0} md={8}>
               <h6>Ministry of Ports, Shipping & Waterways</h6>
               <h2 className="proj-name mt-6">SEAGI-LOCKER</h2>
+            </Col>
+            <Col xs={0} md={4}>
+              {/* <Button
+                variant="contained"
+                className="abc ml-5"
+                onClick={() => handleScan()}
+              >
+                Scan
+              </Button>
+              <Test qr={qr}/> */}
             </Col>
           </Row>
           <Row className="tableContainer">
@@ -202,10 +223,17 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                            <Button variant="contained" onClick={() => handleReview(row._id)}>
+                              <Button
+                                variant="contained"
+                                onClick={() => handleReview(row._id)}
+                              >
                                 Review
                               </Button>
-                              <Button variant="contained" className="abc ml-5" onClick={() => handleReject(row._id)}>
+                              <Button
+                                variant="contained"
+                                className="abc ml-5"
+                                onClick={() => handleReject(row._id)}
+                              >
                                 Reject
                               </Button>
                               <AdminModal
@@ -246,8 +274,7 @@ export default function AdminDash() {
                             <StyledTableCell align="right">
                               {"West Bengal"}
                             </StyledTableCell>
-                            <StyledTableCell align="right">
-                            </StyledTableCell>
+                            <StyledTableCell align="right"></StyledTableCell>
                           </StyledTableRow>
                         ))}
                       </TableBody>
@@ -279,7 +306,10 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={() => handleReject(row._id)}>
+                              <Button
+                                variant="contained"
+                                onClick={() => handleReject(row._id)}
+                              >
                                 Reject
                               </Button>
                             </StyledTableCell>
@@ -313,8 +343,7 @@ export default function AdminDash() {
                             <StyledTableCell align="right">
                               {"West Bengal"}
                             </StyledTableCell>
-                            <StyledTableCell align="right">
-                            </StyledTableCell>
+                            <StyledTableCell align="right"></StyledTableCell>
                           </StyledTableRow>
                         ))}
                       </TableBody>
@@ -328,4 +357,4 @@ export default function AdminDash() {
       </div>
     </>
   );
-     }
+}

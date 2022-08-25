@@ -269,9 +269,9 @@ a {
   background-color: tomato;
   color: white;
 }
-.btn-custom:hover {
+/* .btn-custom:hover {
   color: white;
-}
+} */
 .btn-login {
   width: 100%;
 }

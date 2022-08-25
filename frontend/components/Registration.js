@@ -63,7 +63,7 @@ function Registration() {
       <div className="shadow-lg rounded-lg">
         <div className="flex  mt-4 ">
            <div className="font-sans font-semibold text-lg m-4 text-blue-900">
-                      Register For License here! 
+                      Vessel Registration! 
         </div>
         <div className="flex p-5">
          <div className="w-full ml-10 mt-10">
@@ -158,6 +158,7 @@ function Registration() {
         </Form.Group>
        
       </Row>
+      
       <Row className="mb-3 mt-3">
       <Form.Group as={Col} md="5" >
           <Form.Label>Address</Form.Label>
@@ -174,6 +175,14 @@ function Registration() {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
+      <Row className="mb-3 mt-3">
+      <input type="file"/>
+        <button className="bg-blue-900 text-white h-12 rounded-xl px-6">Upload Ownership Doc</button>
+       </Row>
+       <Row className="mb-3 mt-3">
+      <input type="file"/>
+        <button className="bg-blue-900 text-white h-12 rounded-xl px-6">Upload Builder's Certificate</button>
+       </Row>
       <Form.Group className="mb-3">
         <Form.Check
           required

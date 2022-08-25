@@ -11,6 +11,11 @@ import axios from "axios";
 
 import { useTheme } from "@mui/material/styles";
 
+
+const style = {
+  boxShadow: 24,
+};
+
 export default function ClientDialog(props) {
   console.log(props.row);
   const theme = useTheme();
@@ -33,51 +38,59 @@ export default function ClientDialog(props) {
 
   return (
     <div >
-      <Dialog open={props.open[props.row._id]} onClose={handleClose}>
+      <Dialog open={props.open[props.row._id]} onClose={handleClose} PaperProps={{style:{
+        height:'50%',
+        width:'80%'
+      }}}>
         <DialogTitle>
-          <Typography
+          <Typography align="center"
             sx={{
               fontSize: "2.125rem",
-              fontWeight: 500,
+              fontWeight: 800,
               mr: 1,
               mt: 1.75,
               mb: 0.75,
+              
               // color: theme.palette.secondary[200],
             }}
           >
             Application Details:
           </Typography>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent margin="100px">
           <DialogContentText>
             <Typography
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 500,
+                padding:2
               }}
             >
               <b> 1. Name :</b> {props.row.user.name}
             </Typography>
             <Typography
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 500,
+                padding:2
               }}
             >
               <b> 2. Address :</b> {props.row.address}
             </Typography>
             <Typography
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 500,
+                padding:2
               }}
             >
               <b> 3. D.O.B :</b> {Moment(props.row.dob).format("DD-MM-YYYY")}
             </Typography>
             <Typography
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 500,
+                padding:2
               }}
             >
               <b> 4. Application ID :</b>
@@ -85,8 +98,9 @@ export default function ClientDialog(props) {
             </Typography>
             <Typography
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 500,
+                padding:2
               }}
             >
               <b> 5. Status : </b>
@@ -98,6 +112,9 @@ export default function ClientDialog(props) {
           <Button
             variant="contained"
             onClick={() => props.handlePrev(props.row._id)}
+            sx={{
+              backgroundColor:"red"
+            }}
           >
             Prev
           </Button>
