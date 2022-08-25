@@ -12,14 +12,28 @@ import axios from "axios";
 import { useTheme } from "@mui/material/styles";
 
 export default function ClientDialog(props) {
+  console.log(props.row);
   const theme = useTheme();
   const handleClose = () => {
     props.setOpen(false);
   };
 
+
+  const reviewed = async () => {
+    const body = {id:props.row._id};
+    console.log(body);
+    const res = await axios.put(
+      "http://localhost:5000/application/approve",body,{ withCredentials: true }
+    );
+    if(res.status==200)
+    window.location.reload();
+    console.log(res)
+    props.setOpen(false);
+  };
+
   return (
     <div>
-      <Dialog open={props.open} onClose={handleClose}>
+      <Dialog open={props.open[props.row._id]} onClose={handleClose}>
         <DialogTitle>
           <Typography
             sx={{

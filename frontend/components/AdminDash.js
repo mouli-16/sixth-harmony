@@ -69,7 +69,7 @@ export default function AdminDash() {
       { withCredentials: true }
     );
     setPending(res.data);
-    console.log(res.data);
+    // console.log(res.data);
   };
 
   // IN-PROCESS
@@ -81,7 +81,7 @@ export default function AdminDash() {
       { withCredentials: true }
     );
     setInProcess(res.data);
-    console.log(res.data);
+    // console.log(res.data);
   };
 
   // APPROVED
@@ -104,8 +104,8 @@ export default function AdminDash() {
       "http://localhost:5000/application/getrejected",
       { withCredentials: true }
     );
-    setApproved(res.data);
-    console.log(res.data);
+    setRejected(res.data);
+    // console.log(res.data);
   };
 
   useEffect(() => {
@@ -114,6 +114,7 @@ export default function AdminDash() {
     getApproved();
     getRejected();
   }, []);
+
 
   const [open, setOpen] = React.useState(false);
   const handleReview = async(row) => {
@@ -130,11 +131,20 @@ export default function AdminDash() {
   }
   const handlePrev = (id) => {
     console.log(id);
+
+  const [open, setOpen] = React.useState({});
+  const handleReview = (_id) => {
+    setOpen({[_id]:true});
   }
-  const handleReject = async() => {
+  const handleReject = async(props) => {
+    // console.log(props)
+    const body = {id:props};
+    // console.log(body);
     const res = await axios.put(
-      "http://localhost:5000/application/reject",
+      "http://localhost:5000/application/reject",body,{ withCredentials: true }
     );
+    if(res.status==200)
+    window.location.reload()
   }
   return (
     <>
@@ -175,7 +185,7 @@ export default function AdminDash() {
                       </TableHead>
                       <TableBody>
                         {pending.map((row) => (
-                          <StyledTableRow key={row.user.name}>
+                          <StyledTableRow key={row._id}>
                             <StyledTableCell component="th" scope="row">
                               {row.user.name}
                             </StyledTableCell>
@@ -186,8 +196,9 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={(row) => handleReview(row)}>
-                                Review
+
+                              <Button variant="contained" className="abc ml-5" onClick={() => handleReject(row._id)}>
+                                Reject
                               </Button>
                               <AdminModal
                                 open={open}
@@ -260,7 +271,7 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-                              <Button variant="contained" onClick={handleReject}>
+                              <Button variant="contained" onClick={() => handleReject(row._id)}>
                                 Reject
                               </Button>
                             </StyledTableCell>

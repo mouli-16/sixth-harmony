@@ -98,24 +98,27 @@ routes
 
   // .use(authenticateAdmin)
   .put('/approve', async (req, res) => {
+    console.log(req.body);
     try {
-      await Application.findOneAndUpdate(
-        { user: req.body.userId },
+     const response= await Application.findOneAndUpdate(
+        { _id:req.body.id },
         { status: "inprocess" }
       )
+      console.log(response);
     } catch (error) {
       res.status(500)
       return
     }
 
-    res.status(200).json({ done: true })
+    res.status(200).json({ done: true})
   })
 
   // .use(authenticateAdmin)
   .put('/reject', async (req, res) => {
     try {
+      console.log(req.body);
       await Application.findOneAndUpdate(
-        { user: req.body.userId },
+        { _id:req.body.id },
         { status: "rejected" }
       )
     } catch (error) {
