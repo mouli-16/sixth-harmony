@@ -67,7 +67,7 @@ export default function IssuedDocuments() {
    : ( 
     <div className="w-full ml-10">
       <div className="font-sans font-semibold text-lg text-blue-900 mt-3 ">
-        Welcome, Ruchika
+        Welcome, Srijan Majumdar
       </div>
       <p className="text-gray-900 mt-2">All your documents will appear here.</p>
       <div className="pr-5">
@@ -83,9 +83,9 @@ export default function IssuedDocuments() {
           >
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
-          <div className="font-sans font-semibold text-xl text-blue-900 object-left">
-            Driver's License
-            <div className="font-sans font-semibold text-lg text-stone-400">
+          <div className="font-sans font-semibold text-lg text-blue-900 object-left">
+           Seafarer's License
+         <div className="font-sans font-semibold text-lg text-stone-400">
             674769748787
             </div>
           </div>
@@ -135,8 +135,8 @@ export default function IssuedDocuments() {
           >
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
-          <div className="font-sans font-semibold text-xl text-blue-900 object-left">
-            Driver's Licence
+          <div className="font-sans font-semibold text-lg text-blue-900 object-left">
+           CDC Certificate
             <div className="font-sans font-semibold text-lg text-stone-400">
               64687368776
             </div>
@@ -187,8 +187,8 @@ export default function IssuedDocuments() {
           >
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
-          <div className="font-sans font-semibold text-xl text-blue-900 object-left">
-            Driver's Licence
+          <div className="font-sans font-semibold text-lg text-blue-900 object-left">
+           Certificate of Compliance
             <div className="font-sans font-semibold text-lg text-stone-400">
               56754648667
             </div>

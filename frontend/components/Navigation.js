@@ -4,69 +4,6 @@ import { FiHome } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
 import { BsPeople } from "react-icons/bs";
 
-// import { useState } from "react";
-// import IMG from "./assets/srijan.jpg";
-
-// const Navigation = ({ type }) => {
-//   return (
-//     <div classNameName="navigation">
-//       <div classNameName="navigationWrapper">
-//         <div classNameName="title">
-//           <h6>Ministry of Ports, Shipping & Waterways</h6>
-//           <h1>SEAGI-LOCKER</h1>
-//         </div>
-//         <ul classNameName="navbarlist">
-//           {/* <Link href="/" style={{textDecoration:"none"}}> */}
-//           <li classNameName="navbarListItem">
-//             <FiHome classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">Home</span>
-//           </li>
-//           <li classNameName="navbarListItem">
-//             <FiHome classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">Issued Documents</span>
-//           </li>
-//           {/* </Link> */}
-//           {/* <Link style={{textDecoration:"none"}}> */}
-//           <li classNameName="navbarListItem">
-//             <FiPieChart classNameName="navbarIcon" />
-
-//             <span classNameName="navbarListItemText">Search Documents</span>
-//           </li>
-//           {/* </Link> */}
-//           {/* <Link href="/edit" style={{textDecoration:"none"}}> */}
-//           <li classNameName="navbarListItem">
-//             <FiEdit classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">Registrations</span>
-//           </li>
-//           <li classNameName="navbarListItem">
-//             <FiEdit classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">Drive</span>
-//           </li>
-//           <li classNameName="navbarListItem">
-//             <FiEdit classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">About SeaGiLocker</span>
-//           </li>
-//           {/* </Link> */}
-//           {/* <Link href="/testimonials" style={{textDecoration:"none"}}> */}
-//           {/* <li classNameName="navbarListItem">
-//             <BsPeople classNameName="navbarIcon" />
-//             <span classNameName="navbarListItemText">Br</span>
-//           </li> */}
-//           {/* </Link> */}
-//         </ul>
-//         <div classNameName="profile">
-//           <img src="/assets/srijan.jpg" alt="" classNameName="profileImg" />
-//           <div classNameName="profile__text">
-//             <div classNameName="profileName">Srijan Majumdar</div>
-//             <div classNameName="logout">Logout</div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navigation;
 export default function Navigation(props) {
   const setProp=(p)=>{
     for(var prop in props){

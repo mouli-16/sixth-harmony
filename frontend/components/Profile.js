@@ -36,6 +36,11 @@ export default function Profile() {
               <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">srijanmajumdar2002@gmail.com</p>
             </div>
             <hr></hr>
+            <div className="flex">
+              <div className="mt-2 text-xl font-sans text-gray-600">INDos Number:</div>
+              <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">1I41ZL3R</p>
+            </div>
+            <hr></hr>
           </div>
 
         </div>
