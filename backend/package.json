@@ -26,6 +26,7 @@
     "node-qpdf": "^1.0.3",
     "pdfkit": "^0.13.0",
     "qr-image": "^3.2.0",
+    "redis": "^4.3.0",
     "twilio": "^3.79.0",
     "web3.storage": "^4.3.0"
   },

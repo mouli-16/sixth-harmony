@@ -3,6 +3,15 @@ const { generateToken, authenticate } = require('../middlewares')
 const { User, Admin } = require('../models')
 const { getDetailsFromAadhaar } = require('../utils/dummy')
 const { sendOTP } = require('../utils/otp')
+// import { createClient } from 'redis';
+const redis = require('redis')
+
+const client = redis.createClient({
+  url: 'redis://default:eDAAzdVEkhuwVrSgydmhJLeXQLdCkxEs@redis-10590.c8.us-east-1-3.ec2.cloud.redislabs.com:10590'
+});
+client.on('error', (err) => console.log('Redis Client Error', err));
+
+
 
 const routes = Router()
 
@@ -91,6 +100,16 @@ routes.post("/admin", async (req, res) => {
 
 routes.get("/logout", authenticate, (req, res) => {
   return res.status(200).json("Successfuly Logged out")
+})
+
+routes.post('/postredis',async(req,res)=>{
+  const {body} = req.body
+  await client.connect();
+  console.log("Connected");
+  await client.lPush('rafi',body);
+  console.log("Set");
+const value = await client.lRange('rafi',0,-1);
+   return res.send(value)
 })
 
 module.exports = routes
