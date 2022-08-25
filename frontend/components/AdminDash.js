@@ -116,25 +116,31 @@ export default function AdminDash() {
   }, []);
 
 
-  const [open, setOpen] = React.useState(false);
-  const handleReview = async(row) => {
-    setOpen(true);
-    const res = await axios.put(
-      "http://localhost:5000/application/approve",{userId:row.user},{ withCredentials: true }
-    );
-    console.log(res)
-  }
+  const [open, setOpen] = React.useState({});
   const handleNext = (id) => {
-    const _id = (ele) => ele._id == id
-    const idx = pending.findIndex(_id);
+    let idx = pending.findIndex((ele) => ele._id == id);
     console.log(idx);
+    setOpen({[pending[idx]._id] : false});
+    idx++;
+    let sz = pending.length;
+    if(idx >= sz) idx = 0;
+     setOpen({[pending[idx]._id] : true});
   }
   const handlePrev = (id) => {
-    console.log(id);
-
-  const [open, setOpen] = React.useState({});
-  const handleReview = (_id) => {
-    setOpen({[_id]:true});
+    let idx = pending.findIndex((ele) => ele._id == id);
+    console.log(idx);
+    setOpen({[pending[idx]._id] : false});
+    idx--;
+    if(idx <0) idx = 0;
+     setOpen({[pending[idx]._id] : true});
+  }
+  
+  const handleReview = async(_id) => {
+    setOpen({[_id] : true});
+    const res = await axios.put(
+      "http://localhost:5000/application/approve",{id:_id},{ withCredentials: true }
+    );
+    console.log(res)
   }
   const handleReject = async(props) => {
     // console.log(props)
@@ -196,7 +202,9 @@ export default function AdminDash() {
                               {"West Bengal"}
                             </StyledTableCell>
                             <StyledTableCell align="right">
-
+                            <Button variant="contained" onClick={() => handleReview(row._id)}>
+                                Review
+                              </Button>
                               <Button variant="contained" className="abc ml-5" onClick={() => handleReject(row._id)}>
                                 Reject
                               </Button>
@@ -320,4 +328,4 @@ export default function AdminDash() {
       </div>
     </>
   );
-}
+     }
