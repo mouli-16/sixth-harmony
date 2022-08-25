@@ -7,8 +7,8 @@ const { sendOTP } = require('../utils/otp')
 const routes = Router()
 
 routes.post('/otp', async (req, res) => {
-  const { aadhaar } = req.body;
-  const userDetails = getDetailsFromAadhaar(aadhaar)
+  const { aadhaar, isChecked } = req.body;
+  const userDetails = getDetailsFromAadhaar(aadhaar,isChecked)
 
   if (!userDetails) {
     return res.status(404).json()

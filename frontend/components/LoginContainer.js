@@ -10,6 +10,10 @@ import axios from "axios";
 import ErrComponent from "./errComponent";
 
 const LoginA = ({ setIsDone, setAadhaar }) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
   const name = useRef();
   const aadhar = useRef();
 
@@ -20,6 +24,7 @@ const LoginA = ({ setIsDone, setAadhaar }) => {
     const entry = {
       name: name.current.value,
       aadhaar: aadhar.current.value,
+      isChecked: isChecked
     };
     console.log(entry);
 
@@ -57,12 +62,19 @@ const LoginA = ({ setIsDone, setAadhaar }) => {
                 <input
                   type="text"
                   name="last"
-                  placeholder="Aadhar"
+                  placeholder ={(!isChecked)?"Aadhar":"InDos"}
                   className="input"
                   ref={aadhar}
                 />
+                <input type="checkbox" id="ngo" name="ngo" value="ngo"checked={!isChecked}
+          onChange={handleOnChange} className="check"/>
+           <label for="ngo">Login with Aadhaar No.</label>
+
+           <input type="checkbox" id="rest" name="rest" value="rest" checked={isChecked}
+          onChange={handleOnChange} className="check ml-5"/>
+           <label for="rest">Login with InDos No.</label> 
                 <button
-                  className="btn btn-login btn-custom"
+                  className="btn btn-login btn-custom mt-2"
                   onClick={(e) => handleLogin(e)}
                 >
                   Login
@@ -168,7 +180,20 @@ const AdminLogin = () => {
   const password = useRef();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(entry);
+     const entry = {
+       username : username.current.value,
+       password : password.current.value
+     }
+    try {
+      let res = await axios.post('http://localhost:5000/auth/admin', entry,{ withCredentials:true })
+      if (res.status === 200) {
+        console.log('Verified');
+        Router.push('/adminDashboard')
+      } else setErr(true)
+    } catch (e) {
+      console.log(e)
+    }
+    // console.log(entry);
   };
 
   return (
@@ -198,7 +223,7 @@ const AdminLogin = () => {
                 <Link href="/adminDashboard">
                   <button
                     className="btn btn-login btn-custom"
-                  // onClick={(e) => handleSubmit(e)}
+                  onClick={(e) => handleSubmit(e)}
                   >
                     Login
                   </button>

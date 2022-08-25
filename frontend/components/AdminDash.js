@@ -203,7 +203,7 @@ export default function AdminDash() {
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                       <TableHead>
                         <TableRow>
-                          <StyledTableCell>Name</StyledTableCell>
+                          <StyledTableCell>Application ID</StyledTableCell>
                           <StyledTableCell align="right">Port</StyledTableCell>
                           <StyledTableCell align="right">State</StyledTableCell>
                           <StyledTableCell align="right"></StyledTableCell>
@@ -214,7 +214,7 @@ export default function AdminDash() {
                         {pending.map((row) => (
                           <StyledTableRow key={row._id}>
                             <StyledTableCell component="th" scope="row">
-                              {row.user.name}
+                              {String(row._id).toUpperCase().substring(0,10)}
                             </StyledTableCell>
                             <StyledTableCell align="right">
                               {"Haldia"}
@@ -266,7 +266,7 @@ export default function AdminDash() {
                         {inprocess.map((row) => (
                           <StyledTableRow key={row.user.name}>
                             <StyledTableCell component="th" scope="row">
-                              {row.user.name}
+                              {String(row._id).toUpperCase().substring(0,10)}
                             </StyledTableCell>
                             <StyledTableCell align="right">
                               {"Haldia"}
@@ -297,7 +297,7 @@ export default function AdminDash() {
                         {approved.map((row) => (
                           <StyledTableRow key={row.user.name}>
                             <StyledTableCell component="th" scope="row">
-                              {row.user.name}
+                              {String(row._id).toUpperCase().substring(0,10)}
                             </StyledTableCell>
                             <StyledTableCell align="right">
                               {"Haldia"}
@@ -335,7 +335,7 @@ export default function AdminDash() {
                         {rejected.map((row) => (
                           <StyledTableRow key={row.user.name}>
                             <StyledTableCell component="th" scope="row">
-                              {row.user.name}
+                              {String(row._id).toUpperCase().substring(0,10)}
                             </StyledTableCell>
                             <StyledTableCell align="right">
                               {"Haldia"}

@@ -12,6 +12,7 @@ routes.post('/upload', authenticate, adminOnly, async (req, res) => {
 
     let path = documents[i].path
     let aadhaar = documents[i].aadhaar
+    let type = documents[i].type
 
     const pathFiles = await getFilesFromPath(path)
     const files = []
@@ -27,7 +28,8 @@ routes.post('/upload', authenticate, adminOnly, async (req, res) => {
         $push: {
           files: {
             "name": filename,
-            "cid": cid
+            "cid": cid,
+            "type": type
           }
         }
       }

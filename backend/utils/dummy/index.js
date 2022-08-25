@@ -10,14 +10,20 @@ try {
   aadhaarPrivate = []
 }
 
-function getDetailsFromAadhaar(aadhaar) {
+function getDetailsFromAadhaar(aadhaar,isChecked) {
   for (const obj of aadhaarPrivate) {
-    if (aadhaar === obj.aadhaar)
+    if (!isChecked && aadhaar === obj.aadhaar)
       return obj
+
+    if(isChecked && aadhaar===obj.indos)
+    return obj
   }
   for (const obj of aadhaarDummy) {
-    if (aadhaar === obj.aadhaar)
+    if (!isChecked && aadhaar === obj.aadhaar)
       return obj
+
+    if(isChecked && aadhaar===obj.indos)
+    return obj
   }
   return undefined
 }

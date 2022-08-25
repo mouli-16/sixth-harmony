@@ -22,6 +22,7 @@ export default function IssuedDocuments() {
       withCredentials: true,
     });
     setList(res.data.files);
+    console.log(res.data.files)
   };
 
   useEffect(() => {
@@ -83,7 +84,7 @@ export default function IssuedDocuments() {
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
           <div className="font-sans font-semibold text-xl text-blue-900 object-left">
-            Driver's Licence
+            Driver's License
             <div className="font-sans font-semibold text-lg text-stone-400">
             674769748787
             </div>
