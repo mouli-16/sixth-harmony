@@ -24,7 +24,7 @@ export default function Home(){
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
-            Driver's Licence
+           Document
             <div className="font-sans font-semibold text-lg text-stone-400 ">
               879896754980
             </div>
@@ -78,7 +78,7 @@ export default function Home(){
             <Card.Img variant="top" src="assets/ministryports.jpeg" />
           </Card>
           <div className="font-sans font-semibold text-xl text-blue-900 object-left m-4">
-            Driver's Licence
+           Licence
             <div className="font-sans font-semibold text-lg text-stone-400 ">
           468764767782
             </div>

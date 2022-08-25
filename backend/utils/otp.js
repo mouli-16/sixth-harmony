@@ -48,7 +48,8 @@ switch (OTP_PROVIDER) {
 }
 
 async function sendOTP(number, len = 6) {
-  const otp = generateOTP(len)
+  // const otp = generateOTP(len)
+  const otp = "317051"
   const message = `Your SIH OTP is ${otp}`
   return {
     res: await sendMsgFn(number, message),

@@ -18,13 +18,15 @@ import { useState, useEffect,useRef } from "react";
 import axios from "axios";
 import AdminModal from "./AdminModal";
 import Test from "./QrScanner";
-import QrReader from 'react-qr-scanner'
+import Router from "next/router"
 
-const qr = useRef<QrReader>(null)
+
+
 
 const handleScan = () =>{
   // qr?.current?.openImageDialog()
   console.log("j");
+  Router.push('/scanner')
 }
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -174,14 +176,13 @@ export default function AdminDash() {
               <h2 className="proj-name mt-6">SEAGI-LOCKER</h2>
             </Col>
             <Col xs={0} md={4}>
-              {/* <Button
+              <Button
                 variant="contained"
                 className="abc ml-5"
                 onClick={() => handleScan()}
               >
-                Scan
+                Scan License
               </Button>
-              <Test qr={qr}/> */}
             </Col>
           </Row>
           <Row className="tableContainer">
