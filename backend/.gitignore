@@ -6,3 +6,8 @@ db-data
 
 # Dummy Output PDF
 output.pdf
+# Dummy pswd protected PDF
+$output.pdf
+
+# QR gens
+.gens

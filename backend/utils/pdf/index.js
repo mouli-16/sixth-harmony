@@ -1,11 +1,7 @@
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
-const MemoryFileSystem = require("memory-fs");
-const memFs = new MemoryFileSystem();
 const path = require('path')
-const { Blob } = require('buffer')
-const storage = require('../../config/web3.storage')
-const { getFilesFromPath, filesFromPath } = require('web3.storage')
+const { genQR } = require('../qr')
 
 const consts = {
   dummyProfile: path.join(__dirname, 'assets/dummyProfile.png'),
@@ -14,6 +10,7 @@ const consts = {
 }
 
 function genPDF({
+  id,
   licenseno,
   title,
   name,
@@ -34,9 +31,9 @@ function genPDF({
       underline: true,
     });
 
-  doc.image(consts.dummyProfile, 420, 200, {
-    width: 100
-  });
+  // doc.image(consts.dummyProfile, 420, 200, {
+  //   width: 85
+  // });
 
   doc
     .font('Times-Roman')
@@ -63,9 +60,12 @@ Zip Code: ${zipcode}
     width: 175
   });
 
-  doc.end();
-  doc.pipe(stream);
-  return doc
+  const [qr, pt] = genQR(id)
+  qr.on('close', () => {
+    doc.image(pt, 370, 200)
+    doc.end();
+    doc.pipe(stream)
+  })
 }
 
 module.exports = {
@@ -74,9 +74,8 @@ module.exports = {
 
 // Example
 if (require.main == module) {
-  // let x = memFs.createWriteStream('output.pdf')
-  let x = fs.createWriteStream('output.pdf')
-  let d = genPDF({
+  genPDF({
+    id: '123',
     licenseno: '123AD67T90',
     title: 'Seafarers License',
     name: 'Srijan Majumdar',
@@ -84,27 +83,6 @@ if (require.main == module) {
     address: 'Hall 2, NIT Durgapur',
     city: 'Durgapur',
     zipcode: '713209',
-    // stream: fs.createWriteStream('output.pdf'),
-    stream: x
+    stream: fs.createWriteStream('output.pdf')
   })
-  // console.log(!x, JSON.stringify(x, 2));
-  // const { getFilesFromPath } = require('web3.storage')
-
-  // // storage.put([x])
-  // /**
-  //  * name
-  //  * stream
-  //  * mode
-  //  * mtime
-  //  * size
-  //  */
-  // const stats = fs.statSync('output.pdf')
-  // // storage.put([{
-  // //   name: 'output.pdf',
-  // //   stream: () => fs.createReadStream('output.pdf'),
-  // //   mode: stats.mode,
-  // //   mtime: stats.mtime,
-  // //   size: fs.stat.size
-  // // }]).then((c) => console.log('0CID:', c)).catch((e) => console.log(e))
-  // getFilesFromPath('output.pdf').then((f)=>storage.put([...f]).then((c)=>console.log('1CID:', c)))
 }
