@@ -5,8 +5,8 @@ export default function Home(){
     <>
     <div className='bodyH'>
       <div className="m-4">
-        <div className="font-sans font-semibold text-lg text-orange-700 m-4 text-blue-900">
-                      Welcome, Ruchika
+        <div className="font-sans font-semibold text-lg m-4 text-blue-900">
+                      Welcome, Srijan Majumdar
         </div>
         <p className="text-blue-900 mt-5 ml-4 ">
             Get all your documents from here!

@@ -18,7 +18,7 @@ export default function Profile() {
           <div className="w-full ml-16 mt-10">
             <div className="flex">
               <div className='text-xl font-sans text-gray-600'>Name:</div>
-              <p  className='ml-2 text-xl font-sans text-gray-600'>Ruchika</p>
+              <p  className='ml-2 text-xl font-sans text-gray-600'>Srijan Majumdar</p>
             </div>
             <hr></hr>
             <div className="flex">
@@ -28,12 +28,12 @@ export default function Profile() {
             <hr></hr>
             <div className="flex">
               <div className="mt-2 text-xl font-sans text-gray-600">Gender:</div>
-              <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">Female</p>
+              <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">Male</p>
             </div>
             <hr></hr>
             <div className="flex">
               <div className="mt-2 text-xl font-sans text-gray-600">Email:</div>
-              <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">ruchikashaw@gmail.com</p>
+              <p   className="mt-2 ml-2 text-xl font-sans text-gray-600">srijanmajumdar2002@gmail.com</p>
             </div>
             <hr></hr>
           </div>
