@@ -21,7 +21,13 @@ const applicationSchema = new Schema({
   },
   status: {
     type: String,
-    default: "pending"
+    default: "pending",
+    enum: [
+      "pending",
+      "approved",
+      "inprocess",
+      "rejected",
+    ]
   },
   city:{
     type:String

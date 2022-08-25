@@ -5,9 +5,10 @@ const cookieParser = require("cookie-parser");
 
 const config = require('./config/config')
 const routes = require('./routes')
+const { startCronTasks } = require('./config/cron-tasks')
 
 const { PORT, DB_URI, CORS_ORIGINS } = config
-// const cron = require('./config/cron-taks')
+
 const app = express()
 console.log(CORS_ORIGINS);
 /**
@@ -19,7 +20,8 @@ app.use(cors({
   origin: CORS_ORIGINS,
   credentials: true,
   allowedHeaders: [
-    'Origin','X-Requested-With','Content-Type','Accept','X-Access-Token'
+    'Origin', 'X-Requested-With', 'Content-Type',
+    'Accept', 'X-Access-Token'
   ]
 }))
 
@@ -29,18 +31,23 @@ app.use(cors({
 app.use('/auth', routes.auth)
 app.use('/storage', routes.storage)
 app.use('/application', routes.application)
-app.use('/admin',routes.admin)
+app.use('/admin', routes.admin)
 
 ;(async () => {
   await mongoose.connect(
     DB_URI,
     {
       useNewUrlParser: true,
-      useUnifiedTopology: true 
+      useUnifiedTopology: true
     }
   ).then(() => console.log(
     'Connection established to dB'
   ))
+
+  /* Don't start cron tasks */
+  if (false) {
+    startCronTasks()
+  }
 
   /**
    * Main server

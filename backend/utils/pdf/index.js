@@ -1,6 +1,11 @@
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const MemoryFileSystem = require("memory-fs");
+const memFs = new MemoryFileSystem();
 const path = require('path')
+const { Blob } = require('buffer')
+const storage = require('../../config/web3.storage')
+const { getFilesFromPath, filesFromPath } = require('web3.storage')
 
 const consts = {
   dummyProfile: path.join(__dirname, 'assets/dummyProfile.png'),
@@ -60,6 +65,7 @@ Zip Code: ${zipcode}
 
   doc.end();
   doc.pipe(stream);
+  return doc
 }
 
 module.exports = {
@@ -68,7 +74,9 @@ module.exports = {
 
 // Example
 if (require.main == module) {
-  genPDF({
+  // let x = memFs.createWriteStream('output.pdf')
+  let x = fs.createWriteStream('output.pdf')
+  let d = genPDF({
     licenseno: '123AD67T90',
     title: 'Seafarers License',
     name: 'Srijan Majumdar',
@@ -76,6 +84,27 @@ if (require.main == module) {
     address: 'Hall 2, NIT Durgapur',
     city: 'Durgapur',
     zipcode: '713209',
-    stream: fs.createWriteStream('output.pdf')
+    // stream: fs.createWriteStream('output.pdf'),
+    stream: x
   })
+  // console.log(!x, JSON.stringify(x, 2));
+  // const { getFilesFromPath } = require('web3.storage')
+
+  // // storage.put([x])
+  // /**
+  //  * name
+  //  * stream
+  //  * mode
+  //  * mtime
+  //  * size
+  //  */
+  // const stats = fs.statSync('output.pdf')
+  // // storage.put([{
+  // //   name: 'output.pdf',
+  // //   stream: () => fs.createReadStream('output.pdf'),
+  // //   mode: stats.mode,
+  // //   mtime: stats.mtime,
+  // //   size: fs.stat.size
+  // // }]).then((c) => console.log('0CID:', c)).catch((e) => console.log(e))
+  // getFilesFromPath('output.pdf').then((f)=>storage.put([...f]).then((c)=>console.log('1CID:', c)))
 }
