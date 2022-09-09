@@ -10,4 +10,4 @@ def compare_faces(file1, file2):
     
     results = fr.compare_faces([image1_encoding], image2_encoding)  
     print(results)  
-    return results[0]     
+    return results[0]
